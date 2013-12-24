@@ -1,0 +1,7 @@
+platform :ios, '6.0'
+pod 'MMDrawerController', '~>0.5.1'
+pod 'Reachability',  '~> 3.0.0'
+pod 'CocoaLumberjack',  '~> 1.7.0'
+pod 'MBProgressHUD', '~> 0.8'
+pod 'AFNetworking', '~> 2.0.3'
+pod 'FXLabel',       '~> 1.5'
