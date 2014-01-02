@@ -7,6 +7,21 @@
 //
 
 #import "AppDelegate.h"
+#import "MMDrawerController.h"
+#import "MMDrawerVisualState.h"
+
+#import "CenterTableViewController.h"
+#import "BNNavigationController.h"
+#import "BNViewController.h"
+#import "LeftSideDrawerViewController.h"
+#import "RightSideDrawerViewController.h"
+#import <QuartzCore/QuartzCore.h>
+
+@interface AppDelegate()
+
+@property (nonatomic,strong) MMDrawerController * drawerController;
+
+@end
 
 @implementation AppDelegate
 
@@ -14,14 +29,93 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
+- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    UIViewController *leftSideDrawerViewController = [[LeftSideDrawerViewController alloc] init];
+    UIViewController *rightSideDrawerViewController = [[RightSideDrawerViewController alloc] init];
+    UIViewController *centerViewController = [[CenterTableViewController alloc] init];
+    
+    UINavigationController *navigationController = [[BNNavigationController alloc]initWithRootViewController:centerViewController];
+    [navigationController setRestorationIdentifier:@"CenterNavigationControllerRestorationKey"];
+    
+    
+    if(OSVersionIsAtLeastiOS7()){
+        // TODO iOS7
+    }else{
+        self.drawerController = [[MMDrawerController alloc]
+                                 initWithCenterViewController:navigationController
+                                 leftDrawerViewController:leftSideDrawerViewController
+                                 rightDrawerViewController:rightSideDrawerViewController];
+    }
+    
+    
+    [self.drawerController setRestorationIdentifier:@"MMDrawer"];
+    [self.drawerController setMaximumRightDrawerWidth:200.0];
+    [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+    
+//    [self.drawerController
+//     setDrawerVisualStateBlock:^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
+//         MMDrawerControllerDrawerVisualStateBlock block;
+//         block = [[MMExampleDrawerVisualStateManager sharedManager]
+//                  drawerVisualStateBlockForDrawerSide:drawerSide];
+//         if(block){
+//             block(drawerController, drawerSide, percentVisible);
+//         }
+//     }];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [self.window setRootViewController:self.drawerController];
+
+    return YES;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.backgroundColor = BGCOLOR;
     [self.window makeKeyAndVisible];
     return YES;
 }
+
+
+- (UIViewController *)application:(UIApplication *)application viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents coder:(NSCoder *)coder
+{
+    NSString * key = [identifierComponents lastObject];
+    if([key isEqualToString:@"MMDrawer"]){
+        return self.window.rootViewController;
+    }
+    else if ([key isEqualToString:@"MMExampleCenterNavigationControllerRestorationKey"]) {
+        return ((MMDrawerController *)self.window.rootViewController).centerViewController;
+    }
+    else if ([key isEqualToString:@"MMExampleRightNavigationControllerRestorationKey"]) {
+        return ((MMDrawerController *)self.window.rootViewController).rightDrawerViewController;
+    }
+    else if ([key isEqualToString:@"MMExampleLeftNavigationControllerRestorationKey"]) {
+        return ((MMDrawerController *)self.window.rootViewController).leftDrawerViewController;
+    }
+    else if ([key isEqualToString:@"MMExampleLeftSideDrawerController"]){
+        UIViewController * leftVC = ((MMDrawerController *)self.window.rootViewController).leftDrawerViewController;
+        if([leftVC isKindOfClass:[UINavigationController class]]){
+            return [(UINavigationController*)leftVC topViewController];
+        }
+        else {
+            return leftVC;
+        }
+        
+    }
+    else if ([key isEqualToString:@"MMExampleRightSideDrawerController"]){
+        UIViewController * rightVC = ((MMDrawerController *)self.window.rootViewController).rightDrawerViewController;
+        if([rightVC isKindOfClass:[UINavigationController class]]){
+            return [(UINavigationController*)rightVC topViewController];
+        }
+        else {
+            return rightVC;
+        }
+    }
+    return nil;
+}
+
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

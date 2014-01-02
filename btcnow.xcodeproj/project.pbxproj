@@ -14,6 +14,10 @@
 		26DB25D11875269400D332D0 /* SideDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DB25D01875269400D332D0 /* SideDrawerViewController.m */; };
 		26DB25D41875271200D332D0 /* LeftSideDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DB25D31875271200D332D0 /* LeftSideDrawerViewController.m */; };
 		26DB25D71875272400D332D0 /* RightSideDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DB25D61875272400D332D0 /* RightSideDrawerViewController.m */; };
+		26DB25DB187550EF00D332D0 /* 5s.png in Resources */ = {isa = PBXBuildFile; fileRef = 26DB25DA187550EF00D332D0 /* 5s.png */; };
+		26DB25E5187553B900D332D0 /* 58.png in Resources */ = {isa = PBXBuildFile; fileRef = 26DB25E2187553B900D332D0 /* 58.png */; };
+		26DB25E6187553B900D332D0 /* 80.png in Resources */ = {isa = PBXBuildFile; fileRef = 26DB25E3187553B900D332D0 /* 80.png */; };
+		26DB25E7187553B900D332D0 /* 120.png in Resources */ = {isa = PBXBuildFile; fileRef = 26DB25E4187553B900D332D0 /* 120.png */; };
 		26DC43E51869CD9500EC9C66 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26DC43E41869CD9500EC9C66 /* Foundation.framework */; };
 		26DC43E71869CD9500EC9C66 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26DC43E61869CD9500EC9C66 /* CoreGraphics.framework */; };
 		26DC43E91869CD9500EC9C66 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26DC43E81869CD9500EC9C66 /* UIKit.framework */; };
@@ -59,6 +63,10 @@
 		26DB25D31875271200D332D0 /* LeftSideDrawerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftSideDrawerViewController.m; sourceTree = "<group>"; };
 		26DB25D51875272400D332D0 /* RightSideDrawerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightSideDrawerViewController.h; sourceTree = "<group>"; };
 		26DB25D61875272400D332D0 /* RightSideDrawerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightSideDrawerViewController.m; sourceTree = "<group>"; };
+		26DB25DA187550EF00D332D0 /* 5s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5s.png; sourceTree = "<group>"; };
+		26DB25E2187553B900D332D0 /* 58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 58.png; sourceTree = "<group>"; };
+		26DB25E3187553B900D332D0 /* 80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 80.png; sourceTree = "<group>"; };
+		26DB25E4187553B900D332D0 /* 120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120.png; sourceTree = "<group>"; };
 		26DC43E11869CD9500EC9C66 /* btcnow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = btcnow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26DC43E41869CD9500EC9C66 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		26DC43E61869CD9500EC9C66 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -201,6 +209,10 @@
 		26DB25BE187517E500D332D0 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				26DB25E2187553B900D332D0 /* 58.png */,
+				26DB25E3187553B900D332D0 /* 80.png */,
+				26DB25E4187553B900D332D0 /* 120.png */,
+				26DB25DA187550EF00D332D0 /* 5s.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -385,7 +397,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26DB25E6187553B900D332D0 /* 80.png in Resources */,
+				26DB25DB187550EF00D332D0 /* 5s.png in Resources */,
 				26DC43F11869CD9500EC9C66 /* InfoPlist.strings in Resources */,
+				26DB25E7187553B900D332D0 /* 120.png in Resources */,
+				26DB25E5187553B900D332D0 /* 58.png in Resources */,
 				26DC43FC1869CD9500EC9C66 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -570,8 +586,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "btcnow/btcnow-Prefix.pch";
 				INFOPLIST_FILE = "btcnow/btcnow-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -585,8 +602,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "btcnow/btcnow-Prefix.pch";
 				INFOPLIST_FILE = "btcnow/btcnow-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
