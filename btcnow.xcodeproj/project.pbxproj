@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		26DB25C5187517E500D332D0 /* UIView+frameAdjust.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DB25C3187517E500D332D0 /* UIView+frameAdjust.m */; };
+		26DB25C8187525F500D332D0 /* BNNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DB25C7187525F500D332D0 /* BNNavigationController.m */; };
+		26DB25CB1875260E00D332D0 /* BNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DB25CA1875260E00D332D0 /* BNViewController.m */; };
+		26DB25CE1875267300D332D0 /* CenterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DB25CD1875267300D332D0 /* CenterTableViewController.m */; };
+		26DB25D11875269400D332D0 /* SideDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DB25D01875269400D332D0 /* SideDrawerViewController.m */; };
+		26DB25D41875271200D332D0 /* LeftSideDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DB25D31875271200D332D0 /* LeftSideDrawerViewController.m */; };
+		26DB25D71875272400D332D0 /* RightSideDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DB25D61875272400D332D0 /* RightSideDrawerViewController.m */; };
 		26DC43E51869CD9500EC9C66 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26DC43E41869CD9500EC9C66 /* Foundation.framework */; };
 		26DC43E71869CD9500EC9C66 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26DC43E61869CD9500EC9C66 /* CoreGraphics.framework */; };
 		26DC43E91869CD9500EC9C66 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26DC43E81869CD9500EC9C66 /* UIKit.framework */; };
@@ -41,6 +47,18 @@
 		26DB25BF187517E500D332D0 /* AppDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDefs.h; sourceTree = "<group>"; };
 		26DB25C2187517E500D332D0 /* UIView+frameAdjust.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+frameAdjust.h"; sourceTree = "<group>"; };
 		26DB25C3187517E500D332D0 /* UIView+frameAdjust.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+frameAdjust.m"; sourceTree = "<group>"; };
+		26DB25C6187525F500D332D0 /* BNNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNNavigationController.h; sourceTree = "<group>"; };
+		26DB25C7187525F500D332D0 /* BNNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNNavigationController.m; sourceTree = "<group>"; };
+		26DB25C91875260E00D332D0 /* BNViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNViewController.h; sourceTree = "<group>"; };
+		26DB25CA1875260E00D332D0 /* BNViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNViewController.m; sourceTree = "<group>"; };
+		26DB25CC1875267300D332D0 /* CenterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenterTableViewController.h; sourceTree = "<group>"; };
+		26DB25CD1875267300D332D0 /* CenterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenterTableViewController.m; sourceTree = "<group>"; };
+		26DB25CF1875269400D332D0 /* SideDrawerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideDrawerViewController.h; sourceTree = "<group>"; };
+		26DB25D01875269400D332D0 /* SideDrawerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideDrawerViewController.m; sourceTree = "<group>"; };
+		26DB25D21875271200D332D0 /* LeftSideDrawerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftSideDrawerViewController.h; sourceTree = "<group>"; };
+		26DB25D31875271200D332D0 /* LeftSideDrawerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftSideDrawerViewController.m; sourceTree = "<group>"; };
+		26DB25D51875272400D332D0 /* RightSideDrawerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightSideDrawerViewController.h; sourceTree = "<group>"; };
+		26DB25D61875272400D332D0 /* RightSideDrawerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightSideDrawerViewController.m; sourceTree = "<group>"; };
 		26DC43E11869CD9500EC9C66 /* btcnow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = btcnow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26DC43E41869CD9500EC9C66 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		26DC43E61869CD9500EC9C66 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -141,6 +159,18 @@
 		26DB25BA187517E500D332D0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				26DB25C6187525F500D332D0 /* BNNavigationController.h */,
+				26DB25C7187525F500D332D0 /* BNNavigationController.m */,
+				26DB25C91875260E00D332D0 /* BNViewController.h */,
+				26DB25CA1875260E00D332D0 /* BNViewController.m */,
+				26DB25CC1875267300D332D0 /* CenterTableViewController.h */,
+				26DB25CD1875267300D332D0 /* CenterTableViewController.m */,
+				26DB25CF1875269400D332D0 /* SideDrawerViewController.h */,
+				26DB25D01875269400D332D0 /* SideDrawerViewController.m */,
+				26DB25D21875271200D332D0 /* LeftSideDrawerViewController.h */,
+				26DB25D31875271200D332D0 /* LeftSideDrawerViewController.m */,
+				26DB25D51875272400D332D0 /* RightSideDrawerViewController.h */,
+				26DB25D61875272400D332D0 /* RightSideDrawerViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -408,10 +438,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26DB25CB1875260E00D332D0 /* BNViewController.m in Sources */,
 				26DC43FA1869CD9500EC9C66 /* btcnow.xcdatamodeld in Sources */,
+				26DB25D41875271200D332D0 /* LeftSideDrawerViewController.m in Sources */,
 				26DB25C5187517E500D332D0 /* UIView+frameAdjust.m in Sources */,
 				26DC43F71869CD9500EC9C66 /* AppDelegate.m in Sources */,
+				26DB25D71875272400D332D0 /* RightSideDrawerViewController.m in Sources */,
 				26DC43F31869CD9500EC9C66 /* main.m in Sources */,
+				26DB25CE1875267300D332D0 /* CenterTableViewController.m in Sources */,
+				26DB25D11875269400D332D0 /* SideDrawerViewController.m in Sources */,
+				26DB25C8187525F500D332D0 /* BNNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
