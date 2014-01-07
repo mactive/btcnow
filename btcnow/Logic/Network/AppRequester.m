@@ -35,9 +35,20 @@
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         //
+        block(nil, error);
     }];
 }
 
-
+- (void)getExchangerInfoWithBlock:(void (^)(id, NSError *))block
+{
+    [[AppRequester sharedManager]GET:API_INFO_PATH parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //
+        if (responseObject != nil) {
+            block(responseObject, nil);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        block(nil, block);
+    }];
+}
 
 @end

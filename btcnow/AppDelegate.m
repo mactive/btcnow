@@ -10,6 +10,7 @@
 #import "MMDrawerController.h"
 #import "MMDrawerVisualState.h"
 
+#import "AppRequester.h"
 #import "CenterTableViewController.h"
 #import "BNNavigationController.h"
 #import "BNViewController.h"
@@ -20,7 +21,6 @@
 @interface AppDelegate()
 
 @property (nonatomic,strong) MMDrawerController * drawerController;
-
 @end
 
 @implementation AppDelegate
@@ -28,6 +28,7 @@
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+@synthesize exchangers;
 
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -65,7 +66,7 @@
 //     }];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window setRootViewController:self.drawerController];
-
+    
     return YES;
 }
 

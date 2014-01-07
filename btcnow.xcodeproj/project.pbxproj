@@ -49,6 +49,8 @@
 
 /* Begin PBXFileReference section */
 		030819D3657E4D16B1C1D88D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		26590BC1187B8D8C00034BE0 /* PassValueDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassValueDelegate.h; sourceTree = "<group>"; };
+		26971BF7187AFDE100F70FB1 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		26DB25BF187517E500D332D0 /* AppDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDefs.h; sourceTree = "<group>"; };
 		26DB25C2187517E500D332D0 /* UIView+frameAdjust.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+frameAdjust.h"; sourceTree = "<group>"; };
 		26DB25C3187517E500D332D0 /* UIView+frameAdjust.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+frameAdjust.m"; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 			children = (
 				26DB25C2187517E500D332D0 /* UIView+frameAdjust.h */,
 				26DB25C3187517E500D332D0 /* UIView+frameAdjust.m */,
+				26590BC1187B8D8C00034BE0 /* PassValueDelegate.h */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 		26DC43E31869CD9500EC9C66 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				26971BF7187AFDE100F70FB1 /* Reveal.framework */,
 				26DC43E41869CD9500EC9C66 /* Foundation.framework */,
 				26DC43E61869CD9500EC9C66 /* CoreGraphics.framework */,
 				26DC43E81869CD9500EC9C66 /* UIKit.framework */,
@@ -589,6 +593,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/mactive/Project/Thinktube/btcnow,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "btcnow/btcnow-Prefix.pch";
 				INFOPLIST_FILE = "btcnow/btcnow-Info.plist";
@@ -605,6 +613,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/mactive/Project/Thinktube/btcnow,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "btcnow/btcnow-Prefix.pch";
 				INFOPLIST_FILE = "btcnow/btcnow-Info.plist";

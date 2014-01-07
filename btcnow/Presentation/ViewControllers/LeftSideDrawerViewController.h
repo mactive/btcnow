@@ -10,4 +10,6 @@
 
 @interface LeftSideDrawerViewController : SideDrawerViewController
 
+- (void)reloadData;
+
 @end
