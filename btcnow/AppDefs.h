@@ -133,12 +133,20 @@ typedef enum _MultilineTextAlign{
 }MultilineTextAlign;
 
 
-typedef enum _UserGroup
+typedef enum _ExchangerStatus
 {
-    UserGroupGuest = 1,
-    UserGroupMember  = 2,
-    UserGroupManager = 3
-} UserGroup;
+    ExchangerStatusOpen = 1,
+    ExchangerStatusBusy  = 2,
+    ExchangerStatusClose = 3
+} ExchangerStatus;
+
+#define UIKeyboardNotificationsObserve() \
+NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter]; \
+[notificationCenter addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];\
+[notificationCenter addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+
+#define NotificationsUnobserve() \
+[[NSNotificationCenter defaultCenter] removeObserver:self];
 
 #pragma mark - Core Data
 

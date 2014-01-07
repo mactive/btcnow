@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		261026AE187C43C600B13B47 /* btcnow.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 261026AC187C43C600B13B47 /* btcnow.xcdatamodeld */; };
+		261026B5187C455300B13B47 /* Exchanger.m in Sources */ = {isa = PBXBuildFile; fileRef = 261026B4187C455300B13B47 /* Exchanger.m */; };
+		261026B8187C45F300B13B47 /* Ticker.m in Sources */ = {isa = PBXBuildFile; fileRef = 261026B7187C45F300B13B47 /* Ticker.m */; };
+		261026BC187C46F400B13B47 /* DataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 261026BB187C46F400B13B47 /* DataTransformer.m */; };
 		26DB25C5187517E500D332D0 /* UIView+frameAdjust.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DB25C3187517E500D332D0 /* UIView+frameAdjust.m */; };
 		26DB25C8187525F500D332D0 /* BNNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DB25C7187525F500D332D0 /* BNNavigationController.m */; };
 		26DB25CB1875260E00D332D0 /* BNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DB25CA1875260E00D332D0 /* BNViewController.m */; };
@@ -26,7 +30,6 @@
 		26DC43F11869CD9500EC9C66 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 26DC43EF1869CD9500EC9C66 /* InfoPlist.strings */; };
 		26DC43F31869CD9500EC9C66 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DC43F21869CD9500EC9C66 /* main.m */; };
 		26DC43F71869CD9500EC9C66 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DC43F61869CD9500EC9C66 /* AppDelegate.m */; };
-		26DC43FA1869CD9500EC9C66 /* btcnow.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26DC43F81869CD9500EC9C66 /* btcnow.xcdatamodeld */; };
 		26DC43FC1869CD9500EC9C66 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26DC43FB1869CD9500EC9C66 /* Images.xcassets */; };
 		26DC44031869CD9500EC9C66 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26DC44021869CD9500EC9C66 /* XCTest.framework */; };
 		26DC44041869CD9500EC9C66 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26DC43E41869CD9500EC9C66 /* Foundation.framework */; };
@@ -49,6 +52,13 @@
 
 /* Begin PBXFileReference section */
 		030819D3657E4D16B1C1D88D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		261026AD187C43C600B13B47 /* btcnow.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = btcnow.xcdatamodel; sourceTree = "<group>"; };
+		261026B3187C455300B13B47 /* Exchanger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exchanger.h; sourceTree = "<group>"; };
+		261026B4187C455300B13B47 /* Exchanger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exchanger.m; sourceTree = "<group>"; };
+		261026B6187C45F300B13B47 /* Ticker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ticker.h; sourceTree = "<group>"; };
+		261026B7187C45F300B13B47 /* Ticker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ticker.m; sourceTree = "<group>"; };
+		261026BA187C46F400B13B47 /* DataTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataTransformer.h; path = btcnow/Logic/Models/DataTransformer.h; sourceTree = SOURCE_ROOT; };
+		261026BB187C46F400B13B47 /* DataTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataTransformer.m; path = btcnow/Logic/Models/DataTransformer.m; sourceTree = SOURCE_ROOT; };
 		26590BC1187B8D8C00034BE0 /* PassValueDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassValueDelegate.h; sourceTree = "<group>"; };
 		26971BF7187AFDE100F70FB1 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		26DB25BF187517E500D332D0 /* AppDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDefs.h; sourceTree = "<group>"; };
@@ -83,7 +93,6 @@
 		26DC43F41869CD9500EC9C66 /* btcnow-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "btcnow-Prefix.pch"; sourceTree = "<group>"; };
 		26DC43F51869CD9500EC9C66 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		26DC43F61869CD9500EC9C66 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		26DC43F91869CD9500EC9C66 /* btcnow.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = btcnow.xcdatamodel; sourceTree = "<group>"; };
 		26DC43FB1869CD9500EC9C66 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		26DC44011869CD9500EC9C66 /* btcnowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = btcnowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26DC44021869CD9500EC9C66 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -120,6 +129,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		261026B2187C455300B13B47 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				261026B3187C455300B13B47 /* Exchanger.h */,
+				261026BA187C46F400B13B47 /* DataTransformer.h */,
+				261026BB187C46F400B13B47 /* DataTransformer.m */,
+				261026B4187C455300B13B47 /* Exchanger.m */,
+				261026B6187C45F300B13B47 /* Ticker.h */,
+				261026B7187C45F300B13B47 /* Ticker.m */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
 		26DB25B4187517E500D332D0 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,17 +154,10 @@
 		26DB25B5187517E500D332D0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				26DC43F81869CD9500EC9C66 /* btcnow.xcdatamodeld */,
-				26DB25B6187517E500D332D0 /* Entities */,
+				261026B2187C455300B13B47 /* Entities */,
+				261026AC187C43C600B13B47 /* btcnow.xcdatamodeld */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		26DB25B6187517E500D332D0 /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Entities;
 			sourceTree = "<group>";
 		};
 		26DB25B7187517E500D332D0 /* Network */ = {
@@ -463,13 +478,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				261026AE187C43C600B13B47 /* btcnow.xcdatamodeld in Sources */,
+				261026BC187C46F400B13B47 /* DataTransformer.m in Sources */,
 				26DB25CB1875260E00D332D0 /* BNViewController.m in Sources */,
-				26DC43FA1869CD9500EC9C66 /* btcnow.xcdatamodeld in Sources */,
 				26DB25D41875271200D332D0 /* LeftSideDrawerViewController.m in Sources */,
 				26DB25C5187517E500D332D0 /* UIView+frameAdjust.m in Sources */,
 				26DC43F71869CD9500EC9C66 /* AppDelegate.m in Sources */,
 				26DB25D71875272400D332D0 /* RightSideDrawerViewController.m in Sources */,
 				26DC43F31869CD9500EC9C66 /* main.m in Sources */,
+				261026B5187C455300B13B47 /* Exchanger.m in Sources */,
+				261026B8187C45F300B13B47 /* Ticker.m in Sources */,
 				26DB25CE1875267300D332D0 /* CenterTableViewController.m in Sources */,
 				26DB25D11875269400D332D0 /* SideDrawerViewController.m in Sources */,
 				26DBC3D81875B8D700A30550 /* AppRequester.m in Sources */,
@@ -702,14 +720,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		26DC43F81869CD9500EC9C66 /* btcnow.xcdatamodeld */ = {
+		261026AC187C43C600B13B47 /* btcnow.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				26DC43F91869CD9500EC9C66 /* btcnow.xcdatamodel */,
+				261026AD187C43C600B13B47 /* btcnow.xcdatamodel */,
 			);
-			currentVersion = 26DC43F91869CD9500EC9C66 /* btcnow.xcdatamodel */;
-			name = btcnow.xcdatamodeld;
-			path = ../../btcnow.xcdatamodeld;
+			currentVersion = 261026AD187C43C600B13B47 /* btcnow.xcdatamodel */;
+			path = btcnow.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
