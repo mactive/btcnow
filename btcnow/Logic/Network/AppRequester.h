@@ -17,7 +17,7 @@
 
 + (AppRequester *)sharedManager;
 
-- (void)getExchangerDataWithBlock:(void (^)(id responseObject, NSError *error))block;
+- (void)getTickerDataWithBlock:(void (^)(id responseObject, NSError *error))block;
 - (void)getExchangerInfoWithBlock:(void (^)(id responseObject, NSError *error))block;
 
 

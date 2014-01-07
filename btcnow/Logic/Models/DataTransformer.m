@@ -34,7 +34,7 @@
 
 + (NSString *)getShortname:(id)jsonData
 {
-    return [DataTransformer getStringObjFromServerJSON:jsonData byName:@"shortname"];
+    return [DataTransformer getStringObjFromServerJSON:jsonData byName:@"short_name"];
 }
 
 + (NSInteger)getStatusInt:(id)jsonData

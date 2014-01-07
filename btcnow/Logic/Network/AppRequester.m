@@ -23,7 +23,7 @@
 }
 
 
-- (void)getExchangerDataWithBlock:(void (^)(id , NSError *))block
+- (void)getTickerDataWithBlock:(void (^)(id , NSError *))block
 {
     
     

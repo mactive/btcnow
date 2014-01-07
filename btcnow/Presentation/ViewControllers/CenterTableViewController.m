@@ -54,7 +54,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [[AppRequester sharedManager]getExchangerInfoWithBlock:^(id responseObject, NSError *error) {
+    [[AppRequester sharedManager]getTickerDataWithBlock:^(id responseObject, NSError *error) {
         //
         NSLog(@"%@",responseObject);
         self.dataSource = [responseObject objectForKey:@"exchangers"];

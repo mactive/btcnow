@@ -9,6 +9,10 @@
 #import "AppDelegate.h"
 #import "MMDrawerController.h"
 #import "MMDrawerVisualState.h"
+#import "ModelHelper.h"
+#import "DDLog.h"
+#import "DDTTYLogger.h"
+
 
 #import "AppRequester.h"
 #import "CenterTableViewController.h"
@@ -17,6 +21,12 @@
 #import "LeftSideDrawerViewController.h"
 #import "RightSideDrawerViewController.h"
 #import <QuartzCore/QuartzCore.h>
+
+#if DEBUG
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+#else
+static const int ddLogLevel = LOG_LEVEL_OFF;
+#endif
 
 @interface AppDelegate()
 
@@ -32,6 +42,9 @@
 
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    [ModelHelper sharedHelper].managedObjectContext = self.managedObjectContext;
+    
     UIViewController *leftSideDrawerViewController = [[LeftSideDrawerViewController alloc] init];
     UIViewController *rightSideDrawerViewController = [[RightSideDrawerViewController alloc] init];
     UIViewController *centerViewController = [[CenterTableViewController alloc] init];

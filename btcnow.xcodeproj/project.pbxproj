@@ -11,6 +11,7 @@
 		261026B5187C455300B13B47 /* Exchanger.m in Sources */ = {isa = PBXBuildFile; fileRef = 261026B4187C455300B13B47 /* Exchanger.m */; };
 		261026B8187C45F300B13B47 /* Ticker.m in Sources */ = {isa = PBXBuildFile; fileRef = 261026B7187C45F300B13B47 /* Ticker.m */; };
 		261026BC187C46F400B13B47 /* DataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 261026BB187C46F400B13B47 /* DataTransformer.m */; };
+		261026BF187C4C2800B13B47 /* ModelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 261026BE187C4C2800B13B47 /* ModelHelper.m */; };
 		26DB25C5187517E500D332D0 /* UIView+frameAdjust.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DB25C3187517E500D332D0 /* UIView+frameAdjust.m */; };
 		26DB25C8187525F500D332D0 /* BNNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DB25C7187525F500D332D0 /* BNNavigationController.m */; };
 		26DB25CB1875260E00D332D0 /* BNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DB25CA1875260E00D332D0 /* BNViewController.m */; };
@@ -59,6 +60,8 @@
 		261026B7187C45F300B13B47 /* Ticker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ticker.m; sourceTree = "<group>"; };
 		261026BA187C46F400B13B47 /* DataTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataTransformer.h; path = btcnow/Logic/Models/DataTransformer.h; sourceTree = SOURCE_ROOT; };
 		261026BB187C46F400B13B47 /* DataTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataTransformer.m; path = btcnow/Logic/Models/DataTransformer.m; sourceTree = SOURCE_ROOT; };
+		261026BD187C4C2800B13B47 /* ModelHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModelHelper.h; path = btcnow/Logic/Models/ModelHelper.h; sourceTree = "<group>"; };
+		261026BE187C4C2800B13B47 /* ModelHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModelHelper.m; path = btcnow/Logic/Models/ModelHelper.m; sourceTree = "<group>"; };
 		26590BC1187B8D8C00034BE0 /* PassValueDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassValueDelegate.h; sourceTree = "<group>"; };
 		26971BF7187AFDE100F70FB1 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		26DB25BF187517E500D332D0 /* AppDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDefs.h; sourceTree = "<group>"; };
@@ -133,9 +136,9 @@
 			isa = PBXGroup;
 			children = (
 				261026B3187C455300B13B47 /* Exchanger.h */,
+				261026B4187C455300B13B47 /* Exchanger.m */,
 				261026BA187C46F400B13B47 /* DataTransformer.h */,
 				261026BB187C46F400B13B47 /* DataTransformer.m */,
-				261026B4187C455300B13B47 /* Exchanger.m */,
 				261026B6187C45F300B13B47 /* Ticker.h */,
 				261026B7187C45F300B13B47 /* Ticker.m */,
 			);
@@ -268,6 +271,8 @@
 		26DC43D81869CD9500EC9C66 = {
 			isa = PBXGroup;
 			children = (
+				261026BD187C4C2800B13B47 /* ModelHelper.h */,
+				261026BE187C4C2800B13B47 /* ModelHelper.m */,
 				26DC43EC1869CD9500EC9C66 /* btcnow */,
 				26DC44091869CD9500EC9C66 /* btcnowTests */,
 				26DC43E31869CD9500EC9C66 /* Frameworks */,
@@ -490,6 +495,7 @@
 				261026B8187C45F300B13B47 /* Ticker.m in Sources */,
 				26DB25CE1875267300D332D0 /* CenterTableViewController.m in Sources */,
 				26DB25D11875269400D332D0 /* SideDrawerViewController.m in Sources */,
+				261026BF187C4C2800B13B47 /* ModelHelper.m in Sources */,
 				26DBC3D81875B8D700A30550 /* AppRequester.m in Sources */,
 				26DB25C8187525F500D332D0 /* BNNavigationController.m in Sources */,
 			);

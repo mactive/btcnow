@@ -9,6 +9,7 @@
 #import "LeftSideDrawerViewController.h"
 #import "AppRequester.h"
 #import "AppDelegate.h"
+#import "ModelHelper.h"
 
 @interface LeftSideDrawerViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property(nonatomic, strong)UITableView *tableview;
@@ -40,13 +41,13 @@
     
     self.sectionArray = [NSArray arrayWithObjects:@"交易所", @"帮助", @"关于", nil];
     [self.view addSubview:self.tableView];
-    
+    [self initExchangers];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self initExchangers];
 }
 
 - (void)initExchangers
@@ -54,6 +55,7 @@
     [[AppRequester sharedManager]getExchangerInfoWithBlock:^(id responseObject, NSError *error) {
         if (responseObject != nil) {
             self.dataSource = [responseObject objectForKey:@"exchanger"];
+            [[ModelHelper sharedHelper]saveAllExchangers:[responseObject objectForKey:@"exchanger"]];
             // reload data delegate
             // TODO remake cut some parameter
             XAppDelegate.exchangers = self.dataSource;

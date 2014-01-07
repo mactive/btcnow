@@ -17,6 +17,6 @@
 @property (nonatomic, retain) NSString * shortname;
 @property (nonatomic, retain) NSString * url;
 @property (nonatomic, retain) NSString * currency;
-@property (nonatomic)        u_int16_t * status;
+@property (nonatomic)        u_int16_t status;
 
 @end
