@@ -18,9 +18,9 @@
 
 - (Exchanger *)findExchangerWithID:(NSString *)exchangerID;
 - (Exchanger *)findExchangerWithShortname:(NSString *)shortname;
-
 - (void)populateExchanger:(Exchanger *)exchanger withJSONData:(id)json;
-- (void)saveAllExchangers:(NSArray *)dataArray;
+- (void)syncAllExchangers:(NSArray *)dataArray;
+- (NSArray *)getExchangersByStatus:(NSInteger)status;
 
 - (void)populateTicker:(Ticker *)ticker withJSONData:(id)json;
 - (void)saveAllTickers:(NSArray *)dataArray;

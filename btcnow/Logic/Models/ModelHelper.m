@@ -85,7 +85,32 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
         }
         return [array objectAtIndex:0];
     }
+}
 
+
+- (NSArray *)getExchangersByStatus:(NSInteger)status
+{
+    NSManagedObjectContext *moc = self.managedObjectContext;
+    NSEntityDescription *entityDescription = [NSEntityDescription
+                                              entityForName:@"Exchanger" inManagedObjectContext:moc];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    
+    // Set example predicate and sort orderings...
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:
+                              @"(status = %d)", status];
+    [request setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSArray *array = [moc executeFetchRequest:request error:&error];
+    
+    if ([array count] == 0)
+    {
+        DDLogVerbose(@"User doesn't exist: %@", error);
+        return nil;
+    } else {
+        return array;
+    }
 }
 
 
@@ -100,15 +125,22 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
 }
 
 
-- (void)saveAllExchangers:(NSArray *)dataArray
+- (void)syncAllExchangers:(NSArray *)dataArray
 {
     if ([dataArray count] > 0) {
         [dataArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             
-            Exchanger *theExchanger = [NSEntityDescription insertNewObjectForEntityForName:@"Exchanger"
-                                                                    inManagedObjectContext:self.managedObjectContext];
-            
-            [[ModelHelper sharedHelper]populateExchanger:theExchanger withJSONData:obj];
+            Exchanger *theExchanger = [[ModelHelper sharedHelper]findExchangerWithID:[DataTransformer getID:obj]];
+            if (theExchanger == nil) {
+                // insert new one
+                Exchanger *theExchanger = [NSEntityDescription insertNewObjectForEntityForName:@"Exchanger"
+                                                                        inManagedObjectContext:self.managedObjectContext];
+                
+                [[ModelHelper sharedHelper]populateExchanger:theExchanger withJSONData:obj];
+            }else{
+                // update the one
+                [[ModelHelper sharedHelper]populateExchanger:theExchanger withJSONData:obj];
+            }
             
         }];
         

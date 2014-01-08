@@ -80,7 +80,25 @@ static const int ddLogLevel = LOG_LEVEL_OFF;
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window setRootViewController:self.drawerController];
     
+    [self syncExchangerInfo];
+
     return YES;
+}
+
+- (void)syncExchangerInfo
+{
+    // TODO Check if has the info
+    // INSERT AND than UPDATE and delete
+    
+    [[AppRequester sharedManager]getExchangerInfoWithBlock:^(id responseObject, NSError *error) {
+        if (responseObject != nil) {
+            NSArray *theExchangers = [responseObject objectForKey:@"exchanger"];
+            [[ModelHelper sharedHelper]syncAllExchangers:theExchangers];
+            
+            self.exchangers = [[ModelHelper sharedHelper]getExchangersByStatus:ExchangerStatusOpen];
+            DDLogVerbose(@"count %d",[self.exchangers count]);
+        }
+    }];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
