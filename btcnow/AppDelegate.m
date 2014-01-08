@@ -80,6 +80,9 @@ static const int ddLogLevel = LOG_LEVEL_OFF;
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window setRootViewController:self.drawerController];
     
+    
+    // TODO Global network reachabled
+    // get a TSMessages
     [self syncExchangerInfo];
 
     return YES;
@@ -87,14 +90,12 @@ static const int ddLogLevel = LOG_LEVEL_OFF;
 
 - (void)syncExchangerInfo
 {
-    // TODO Check if has the info
-    // INSERT AND than UPDATE and delete
-    
     [[AppRequester sharedManager]getExchangerInfoWithBlock:^(id responseObject, NSError *error) {
         if (responseObject != nil) {
             NSArray *theExchangers = [responseObject objectForKey:@"exchanger"];
             [[ModelHelper sharedHelper]syncAllExchangers:theExchangers];
             
+            // if status !=1 will not show
             self.exchangers = [[ModelHelper sharedHelper]getExchangersByStatus:ExchangerStatusOpen];
             DDLogVerbose(@"count %d",[self.exchangers count]);
         }
