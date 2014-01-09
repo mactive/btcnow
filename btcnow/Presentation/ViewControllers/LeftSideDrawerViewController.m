@@ -13,7 +13,7 @@
 
 @interface LeftSideDrawerViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property(nonatomic, strong)UITableView *tableview;
-@property(nonatomic, strong)NSMutableArray *dataSource;
+@property(nonatomic, strong)NSArray *dataSource;
 @property(nonatomic, strong)NSArray *sectionArray;
 @end
 
@@ -41,27 +41,19 @@
     
     self.sectionArray = [NSArray arrayWithObjects:@"交易所", @"帮助", @"关于", nil];
     [self.view addSubview:self.tableView];
-    [self initExchangers];
 
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [self refreshExchangers];
 }
 
-- (void)initExchangers
+- (void)refreshExchangers
 {
-    [[AppRequester sharedManager]getExchangerInfoWithBlock:^(id responseObject, NSError *error) {
-        if (responseObject != nil) {
-            self.dataSource = [responseObject objectForKey:@"exchanger"];
-            [[ModelHelper sharedHelper]saveAllExchangers:[responseObject objectForKey:@"exchanger"]];
-            // reload data delegate
-            // TODO remake cut some parameter
-            XAppDelegate.exchangers = self.dataSource;
-            [self.tableView reloadData];
-        }
-    }];
+    self.dataSource = XAppDelegate.exchangers;
+    [self.tableView reloadData];
 }
 
 #pragma mark - tableview datashource
@@ -94,8 +86,8 @@
     }
     NSInteger section = indexPath.section;
     if (section == 0){
-        NSDictionary *rowData = [self.dataSource objectAtIndex:indexPath.row];
-        cell.textLabel.text = [rowData objectForKey:@"name"];
+        Exchanger *rowData = [self.dataSource objectAtIndex:indexPath.row];
+        cell.textLabel.text = rowData.name;
     }else{
         cell.textLabel.text = @"xxx";
     }

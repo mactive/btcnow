@@ -80,7 +80,26 @@ static const int ddLogLevel = LOG_LEVEL_OFF;
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window setRootViewController:self.drawerController];
     
+    
+    // TODO Global network reachabled
+    // get a TSMessages
+    [self syncExchangerInfo];
+
     return YES;
+}
+
+- (void)syncExchangerInfo
+{
+    [[AppRequester sharedManager]getExchangerInfoWithBlock:^(id responseObject, NSError *error) {
+        if (responseObject != nil) {
+            NSArray *theExchangers = [responseObject objectForKey:@"exchanger"];
+            [[ModelHelper sharedHelper]syncAllExchangers:theExchangers];
+            
+            // if status !=1 will not show
+            self.exchangers = [[ModelHelper sharedHelper]getExchangersByStatus:ExchangerStatusOpen];
+            DDLogVerbose(@"count %d",[self.exchangers count]);
+        }
+    }];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
