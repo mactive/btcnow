@@ -8,6 +8,13 @@
 
 #import "AppRequester.h"
 
+#import "DDLog.h"
+
+#if DEBUG
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+#else
+static const int ddLogLevel = LOG_LEVEL_OFF;
+#endif
 @implementation AppRequester
 
 + (AppRequester *)sharedManager
@@ -50,5 +57,32 @@
         block(nil, block);
     }];
 }
+
+- (void)getNewsWithStrat:(NSInteger)start length:(NSInteger)length andBlock:(void (^)(id responseObject, NSError *error))block
+{
+    NSString * startString = [NSString stringWithFormat:@"%i",start];
+    NSString * lengthString = [NSString stringWithFormat:@"%i",length];
+    
+    NSDictionary *postDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                              startString, @"start",
+                              lengthString, @"length",
+                              nil];
+    
+    [[AppRequester sharedManager]POST:API_NEWS_PATH parameters:postDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+        if(responseObject != nil) {
+            if (block) {
+                block(responseObject , nil);
+            }
+        }else{
+            [DataTransformer showErrorWithUrl:API_BASE data:responseObject andBlock:block];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        DDLogError(@"login error: %@",error);
+        if (block) {
+            block(nil , error);
+        }
+    }];
+}
+
 
 @end

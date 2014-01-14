@@ -68,18 +68,20 @@
 #define FONT_LIGHT_15 [UIFont fontWithName:@"Gotham-Light" size:15.0f]
 #define FONT_LIGHT_12 [UIFont fontWithName:@"Gotham-Light" size:12.0f]
 #define FONT_AWESOME_15 [UIFont fontWithName:@"FontAwesome" size:15.0f]
+#define FONT_AWESOME_30 [UIFont fontWithName:@"FontAwesome" size:30.0f]
 
 // font awesome
-#define ICON_GITHUB @"\uf113"
-#define ICON_WEIBO  @"\uf18a"
-#define ICON_DRIBBBLE @"\uf17d"
-#define ICON_TWITTER @"\uf099"
-#define ICON_TUMBLR @"\uf173"
-#define TOP_HEIGHT 44.0f
-#define TABBAR_HEIGHT 44.0f
-#define CELL_HEIGHT 60.0f
-#define SECTION_HEADER_HEIGHT 20.0f
-#define SECTION_FOOTER_HEIGHT 40.0f
+#define ICON_GITHUB     @"\uf113"
+#define ICON_WEIBO      @"\uf18a"
+#define ICON_DRIBBBLE   @"\uf17d"
+#define ICON_TWITTER    @"\uf099"
+#define ICON_TUMBLR     @"\uf173"
+#define ICON_THUMBSUP   @"\uf164"
+#define ICON_COLLECT    @"\uf005"
+#define ICON_COMMENTS   @"\uf086"
+#define ICON_TIMES_CIRCLE @"\uf057"
+#define ICON_FLAG       @"\uf024"
+#define ICON_CHECK      @"\uf00c"
 
 // NSARRAY
 #define TYRE_HEIGHT     (IS_IPHONE_5 ? 180.0f : 160.0f)

@@ -12,6 +12,7 @@
 #define API_BASE            @"http://localhost:8866"
 #define API_TICKER_PATH     @"/ticker"
 #define API_INFO_PATH       @"/exchanger"
+#define API_NEWS_PATH       @"/news"
 
 @interface AppRequester : AFHTTPRequestOperationManager
 
@@ -19,6 +20,7 @@
 
 - (void)getTickerDataWithBlock:(void (^)(id responseObject, NSError *error))block;
 - (void)getExchangerInfoWithBlock:(void (^)(id responseObject, NSError *error))block;
+- (void)getNewsWithStrat:(NSInteger)start length:(NSInteger)length andBlock:(void (^)(id responseObject, NSError *error))block;
 
 
 @end

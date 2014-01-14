@@ -24,6 +24,16 @@
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>FontAwesome.otf</string>
+		<string>Museo500-Regular.otf</string>
+		<string>Gotham-Black.otf</string>
+		<string>Gotham-Blod.otf</string>
+		<string>Gotham-Book.otf</string>
+		<string>Gotham-Light.otf</string>
+		<string>Gotham-Medium.otf</string>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

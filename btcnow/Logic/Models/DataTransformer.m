@@ -7,6 +7,17 @@
 //
 
 #import "DataTransformer.h"
+#import <HTProgressHUD/HTProgressHUD.h>
+#import <HTProgressHUD/HTProgressHUDIndicatorView.h>
+#import "AppDelegate.h"
+
+#import "DDLog.h"
+// Log levels: off, error, warn, info, verbose
+#if DEBUG
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+#else
+static const int ddLogLevel = LOG_LEVEL_OFF;
+#endif
 
 #define DATETIME_FORMATE @"yyyy-MM-dd hh:mm:ss"
 #define DATE_FORMATE @"yyyy-MM-dd"
@@ -21,20 +32,19 @@
 
 @implementation DataTransformer
 
-
 + (NSString *)getID:(id)jsonData
 {
-    return [DataTransformer getStringObjFromServerJSON:jsonData byName:@"id"];
+    return [DataTransformer getStringObj:jsonData byName:@"id"];
 }
 
 + (NSString *)getName:(id)jsonData
 {
-    return [DataTransformer getStringObjFromServerJSON:jsonData byName:@"name"];
+    return [DataTransformer getStringObj:jsonData byName:@"name"];
 }
 
 + (NSString *)getShortname:(id)jsonData
 {
-    return [DataTransformer getStringObjFromServerJSON:jsonData byName:@"short_name"];
+    return [DataTransformer getStringObj:jsonData byName:@"short_name"];
 }
 
 + (NSInteger)getStatusInt:(id)jsonData
@@ -43,12 +53,12 @@
 }
 + (NSString *)getCurrency:(id)jsonData
 {
-    return [DataTransformer getStringObjFromServerJSON:jsonData byName:@"currency"];
+    return [DataTransformer getStringObj:jsonData byName:@"currency"];
 }
 
 + (NSString *)getUrl:(id)jsonData
 {
-    return [DataTransformer getStringObjFromServerJSON:jsonData byName:@"url"];
+    return [DataTransformer getStringObj:jsonData byName:@"url"];
 }
 
 
@@ -85,13 +95,21 @@
 
 
 
-+(NSString *)getStringObjFromServerJSON:(id)jsonData byName:(id)name
++(NSString *)getStringObj:(id)jsonData byName:(id)name
 {
     id obj = [jsonData valueForKey:name];
     if (obj == nil) return @"";
     
     return [self convertNumberToStringIfNumber:obj];
 }
+
++(NSNumber *)getNumberObj:(id)jsonData byName:(id)name
+{
+    id obj = [jsonData valueForKey:name];
+    if (obj == nil) return [[NSNumber alloc]initWithFloat:0.0f];
+    return obj;
+}
+
 
 +(NSInteger)getIntegerFromServerJSON:(id)jsonData byName:(id)name
 {
@@ -173,8 +191,95 @@
     } else {
         return [dateFormatter stringFromDate:date];
     }
-    
 }
 
+
+#pragma mark - make data
+
++ (NSDictionary *)makePostDict:(NSDictionary *)params
+{
+    NSString *token = @"1024";
+    if (!StringHasValue(token)) {
+        token = @"1024";
+    }
+    
+    NSDictionary *postDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                              params, @"params",
+                              token, @"token",
+                              nil];
+    return postDict;
+}
+
++ (void)showErrorWithUrl:(NSString *)url data:(NSDictionary *)responseObject andBlock:(void (^)(id, NSError *))block
+{
+    NSError *error = [[NSError alloc]initWithDomain:url
+                                               code:[DataTransformer getIntStatus:responseObject]
+                                           userInfo:nil];
+    //    block(nil , error);
+    
+    HTProgressHUD *HUD = [[HTProgressHUD alloc]init];
+    HUD.text = [NSString stringWithFormat:@"%@: %@",T(@"错误代码"), [DataTransformer getStatus:responseObject]];
+    
+    UILabel *indicator = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
+    indicator.backgroundColor = [UIColor clearColor];
+    indicator.textColor = [UIColor colorWithWhite:1.0 alpha:1.0];
+    indicator.text = ICON_TIMES_CIRCLE;
+    indicator.font = FONT_AWESOME_30;
+    
+    HUD.indicatorView = (HTProgressHUDIndicatorView *)indicator;
+    [HUD showInView:XAppDelegate.window animated:YES];
+    [HUD hideAfterDelay:1];
+    
+    DDLogError(@"%@",error);
+}
+
++ (void)showFontAwesomeWithTitle:(NSString *)title andCheatsheet:(NSString *)Cheatsheet
+{
+    HTProgressHUD *HUD = [[HTProgressHUD alloc]init];
+    
+    UILabel *indicator = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
+    indicator.backgroundColor = [UIColor clearColor];
+    indicator.textColor = [UIColor colorWithWhite:1.0 alpha:1.0];
+    indicator.text = Cheatsheet;
+    indicator.font = FONT_AWESOME_30;
+    
+    HUD.indicatorView = (HTProgressHUDIndicatorView *)indicator;
+    HUD.text = title;
+    [HUD showInView:XAppDelegate.window animated:YES];
+    [HUD hideAfterDelay:1];
+}
+
+
+#pragma mark - status
+
++ (NSString *)getStatus:(id)jsonData
+{
+    return [DataTransformer getStringObj:jsonData byName:@"status"];
+}
+
++ (NSInteger)getIntStatus:(id)jsonData
+{
+    NSNumber *status = [DataTransformer getNumberObj:jsonData byName:@"status"];
+    return status.integerValue;
+}
+
++ (NSInteger)getCountFromString:(NSString *)source useSubString:(NSString *)subString
+{
+    NSScanner *mainScanner = [NSScanner scannerWithString:source];
+    NSString *temp;
+    NSInteger numberOfChar = 0;
+    while(![mainScanner isAtEnd])
+    {
+        [mainScanner scanUpToString:subString intoString:&temp];
+        if(![mainScanner isAtEnd]) {
+            numberOfChar++;
+            [mainScanner scanString:subString intoString:nil];
+        }
+    }
+    //
+    //    NSInteger count = [[source componentsSeparatedByString:subString] count];
+    //    return count;
+    return numberOfChar;
+}
 
 @end
