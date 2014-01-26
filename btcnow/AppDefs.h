@@ -68,6 +68,7 @@
 #define FONT_LIGHT_15 [UIFont fontWithName:@"Gotham-Light" size:15.0f]
 #define FONT_LIGHT_12 [UIFont fontWithName:@"Gotham-Light" size:12.0f]
 #define FONT_AWESOME_15 [UIFont fontWithName:@"FontAwesome" size:15.0f]
+#define FONT_AWESOME_24 [UIFont fontWithName:@"FontAwesome" size:24.0f]
 #define FONT_AWESOME_30 [UIFont fontWithName:@"FontAwesome" size:30.0f]
 
 // font awesome
@@ -82,14 +83,21 @@
 #define ICON_TIMES_CIRCLE @"\uf057"
 #define ICON_FLAG       @"\uf024"
 #define ICON_CHECK      @"\uf00c"
+#define ICON_LIST       @"\uf0c9"
+#define ICON_FLAG       @"\uf024"
+#define ICON_SEARCH     @"\uf002"
+#define ICON_DOWNLOAD   @"\uf019"
+#define ICON_SETTING    @"\uf013"
+#define ICON_FEEDBACK   @"\uf0e5"
+#define ICON_MINE       @"\uf058"
 
 // NSARRAY
 #define TYRE_HEIGHT     (IS_IPHONE_5 ? 180.0f : 160.0f)
 #define TYRE_WIDTH      (IS_IPHONE_5 ? 180.0f : 160.0f)
 #define TOTAL_WIDTH     320.0f
-#define CELL_HEIGHT     60.0f
+#define CELL_HEIGHT     40.0f
 #define NAV_BAR_HEIGHT 26.0f
-#define LEFT_MAX_WIDTH 260.0f
+#define LEFT_MAX_WIDTH 240.0f
 
 
 // Color helpers
@@ -105,7 +113,7 @@ alpha:(a)]
 
 
 #define BGCOLOR [UIColor colorWithRed:222.0f/255.0 green:222.0f/255.0 blue:222.0f/255.0 alpha:1.0]
-#define GREENCOLOR [UIColor colorWithRed:57.0f/255.0f green:181.0f/255.0f blue:74.0f/255.0f alpha:1]
+#define GREENCOLOR [UIColor colorWithRed:126.0f/255.0f green:211.0f/255.0f blue:33.0f/255.0f alpha:1]
 #define REDCOLOR [UIColor colorWithRed:237.0f/255.0f green:28.0f/255.0f blue:36.0f/255.0f alpha:1]
 #define GRAYCOLOR [UIColor colorWithRed:158.0f/255.0f green:158.0f/255.0f blue:158.0f/255.0f alpha:1]
 #define GRAYLIGHTCOLOR [UIColor colorWithRed:200.0f/255.0f green:200.0f/255.0f blue:200.0f/255.0f alpha:1]
@@ -117,9 +125,7 @@ alpha:(a)]
 #define ORANGE_INNERSHADOW_COLOR [UIColor colorWithRed:239.0f/255.0f green:105.0f/255.0f blue:6.0f/255.0f alpha:1]
 #define ORANGE_GLOW_COLOR [UIColor colorWithRed:252.0f/255.0f green:242.0f/255.0f blue:174.0f/255.0f alpha:0.4f]
 
-#define BLUECOLOR [UIColor colorWithRed:144.0f/255.0f green:253.0f/255.0f blue:255.0f/255.0f alpha:1]
-#define BLUE_INNERSHADOW_COLOR [UIColor colorWithRed:0.0f/255.0f green:6.0f/255.0f blue:255.0f/255.0f alpha:1]
-#define BLUE_GLOW_COLOR [UIColor colorWithRed:0.0f/255.0f green:68.0f/255.0f blue:202.0f/255.0f alpha:1]
+#define BLUECOLOR [UIColor colorWithRed:74.0f/255.0f green:144.0f/255.0f blue:226.0f/255.0f alpha:1]
 
 #define ORANGE_LINE_COLOR [UIColor colorWithRed:255.0f/255.0f green:198.0f/255.0f blue:0.0f/255.0f alpha:1]
 #define YELLOW_DOT_COLOR  [UIColor colorWithRed:251.0f/255.0f green:203.0f/255.0f blue:58.0f/255.0f alpha:1]

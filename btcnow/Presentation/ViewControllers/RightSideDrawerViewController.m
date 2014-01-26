@@ -28,7 +28,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.title = T(@"新闻");
+        self.title = T(@"设置");
     }
     return self;
 }

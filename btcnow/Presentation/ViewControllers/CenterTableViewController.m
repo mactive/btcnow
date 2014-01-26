@@ -70,7 +70,7 @@
 
 - (void)viewNewsAction
 {
-    FMViewController *viewController = [[FMViewController alloc]initWithNibName:nil bundle:nil];
+    NewsListViewController *viewController = [[NewsListViewController alloc]initWithNibName:nil bundle:nil];
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
@@ -90,13 +90,25 @@
 #pragma mark -- BarButton Item
 
 -(void)setupLeftMenuButton{
-    MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
-    [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
+    UIButton *leftDrawerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
+    leftDrawerButton.titleLabel.font = FONT_AWESOME_24;
+    [leftDrawerButton setTitle:ICON_LIST forState:UIControlStateNormal];
+    [leftDrawerButton setTitleColor:BLUECOLOR forState:UIControlStateNormal];
+    [leftDrawerButton addTarget:self action:@selector(leftDrawerButtonPress:) forControlEvents:UIControlEventTouchUpInside];
+    [leftDrawerButton setFrame:CGRectMake(0, 0, 50, 30)];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftDrawerButton];
 }
 
 -(void)setupRightMenuButton{
-    MMDrawerBarButtonItem * rightDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(rightDrawerButtonPress:)];
-    [self.navigationItem setRightBarButtonItem:rightDrawerButton animated:YES];
+    UIButton *rightDrawerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
+    rightDrawerButton.titleLabel.font = FONT_AWESOME_24;
+    [rightDrawerButton setTitle:ICON_SETTING forState:UIControlStateNormal];
+    [rightDrawerButton setTitleColor:BLUECOLOR forState:UIControlStateNormal];
+    [rightDrawerButton addTarget:self action:@selector(rightDrawerButtonPress:) forControlEvents:UIControlEventTouchUpInside];
+    [rightDrawerButton setFrame:CGRectMake(0, 0, 50, 30)];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightDrawerButton];
 }
 
 

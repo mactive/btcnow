@@ -7,6 +7,7 @@
 //
 
 #import "NewsListViewController.h"
+#import "SVPullToRefresh.h"
 
 @interface NewsListViewController ()
 
@@ -27,6 +28,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.view.backgroundColor = BGCOLOR;
 }
 
 - (void)didReceiveMemoryWarning

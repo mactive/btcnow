@@ -11,11 +11,9 @@
 #import "AppRequester.h"
 #import "AppDelegate.h"
 #import "ModelHelper.h"
-#import <FMMoveTableView/FMMoveTableView.h>
-#import <FMMoveTableView/FMMoveTableViewCell.h>
 
-@interface LeftSideDrawerViewController ()<FMMoveTableViewDataSource, FMMoveTableViewDelegate>
-@property(nonatomic, strong)FMMoveTableView *tableview;
+@interface LeftSideDrawerViewController ()<UITableViewDataSource, UITableViewDelegate>
+@property(nonatomic, strong)UITableView *tableview;
 @property(nonatomic, strong)NSMutableArray *dataSource;
 @property(nonatomic, strong)UIButton *editingButton;
 @end
@@ -37,18 +35,18 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.title = T(@"长按调整排序");
+    self.title = T(@"交易所管理");
     
-    self.editingButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.editingButton.frame=CGRectMake(0, 0, 50, 29);
-    [self.editingButton setTitle:T(@"排序") forState:UIControlStateNormal];
-    [self.editingButton addTarget:self action:@selector(editingButtonAction) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.editingButton];
+//    self.editingButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    self.editingButton.frame=CGRectMake(0, 0, 50, 29);
+//    [self.editingButton setTitle:T(@"排序") forState:UIControlStateNormal];
+//    [self.editingButton addTarget:self action:@selector(editingButtonAction) forControlEvents:UIControlEventTouchUpInside];
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.editingButton];
     
     
     CGRect frame = self.view.bounds;
     frame.size.width = LEFT_MAX_WIDTH;
-    self.tableView = [[FMMoveTableView alloc]initWithFrame:frame style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc]initWithFrame:frame style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
@@ -70,75 +68,98 @@
 
 #pragma mark - tableview datashource
 
-- (NSInteger)numberOfSectionsInTableView:(FMMoveTableView *)tableView
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
 }
 
 
-- (NSInteger)tableView:(FMMoveTableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.dataSource count];
 }
 
 #pragma mark - tableview delegate
 
-- (void)editingButtonAction
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.tableView.editing) {
-        [self.tableView setEditing:NO animated:NO];
-    }else{
-        [self.tableView setEditing:YES animated:YES];
-        
-    }
+    return CELL_HEIGHT;
 }
 
-- (void)moveTableView:(FMMoveTableView *)tableView moveRowFromIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-    id thing = [self.dataSource objectAtIndex:fromIndexPath.row];
-    [self.dataSource removeObjectAtIndex:fromIndexPath.row];
-    [self.dataSource insertObject:thing atIndex:toIndexPath.row];   
-}
-
-//- (void)tableView:(FMMoveTableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
-//{
-//    id thing = [self.dataSource objectAtIndex:sourceIndexPath.row];
-//    [self.dataSource removeObjectAtIndex:sourceIndexPath.row];
-//    [self.dataSource insertObject:thing atIndex:destinationIndexPath.row];
-//    NSLog(@"%@",thing);
-//}
-- (BOOL)tableView:(FMMoveTableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return YES;
-}
-- (NSIndexPath *)moveTableView:(FMMoveTableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
-{
-	//	Uncomment these lines to enable moving a row just within it's current section
-	//	if ([sourceIndexPath section] != [proposedDestinationIndexPath section]) {
-	//		proposedDestinationIndexPath = sourceIndexPath;
-	//	}
-	
-	return proposedDestinationIndexPath;
-}
-
-#pragma mark - FmmoveTableView
 
 
-- (FMMoveTableViewCell *)tableView:(FMMoveTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+#pragma mark - UITableView
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"LeftDrawerCell";
-    FMMoveTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    // Configure the cell...
     if (cell == nil) {
-        cell = [[FMMoveTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [self tableViewCellWithReuseIdentifier:CellIdentifier];
     }
-
-    Exchanger *rowData = [self.dataSource objectAtIndex:indexPath.row];
-    cell.textLabel.text = rowData.name;
+    
+    [self configureCell:cell forIndexPath:indexPath];
     
     
     return cell;
 }
+
+#define SEL_WIDTH 40.0
+#define SEL_HEIGHT 20.0
+#define SEL_Y (CELL_HEIGHT - SEL_HEIGHT)/2
+#define SEL_TAG 10
+
+- (UITableViewCell *)tableViewCellWithReuseIdentifier:(NSString *)identifier
+{
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+    
+    UILabel *selectedLabal = [[UILabel alloc]initWithFrame:CGRectMake(LEFT_MAX_WIDTH - SEL_WIDTH, SEL_Y, SEL_WIDTH, SEL_HEIGHT)];
+    selectedLabal.tag = SEL_TAG;
+    selectedLabal.font = FONT_AWESOME_15;
+    selectedLabal.text = ICON_CHECK;
+    
+    [cell.contentView addSubview:selectedLabal];
+    
+//    cell.textLabel.font = [UIFont systemFontOfSize:15];
+//    cell.textLabel.textColor = RGBCOLOR(195, 70, 21);
+//    cell.textLabel.backgroundColor = [UIColor clearColor];
+    
+    return  cell;
+}
+
+
+
+- (void)configureCell:(UITableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath {
+    
+    Exchanger *theExchanger = [self.dataSource objectAtIndex:indexPath.row];
+    UILabel *selectedLabal = (UILabel *)[cell viewWithTag:SEL_TAG];
+    
+    if (theExchanger.selected) {
+        [selectedLabal setHidden:NO];
+    }else{
+        [selectedLabal setHidden:YES];
+    }
+    
+    cell.textLabel.text = theExchanger.name;
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Exchanger *theExchanger = [self.dataSource objectAtIndex:indexPath.row];
+    theExchanger.selected = !theExchanger.selected;
+    
+    [self.tableView beginUpdates];
+    NSArray *indexPaths = [[NSArray alloc] initWithObjects:indexPath, nil];
+    [self.tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView endUpdates];
+    
+}
+
 
 
 

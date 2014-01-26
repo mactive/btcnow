@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		261026AE187C43C600B13B47 /* btcnow.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 261026AC187C43C600B13B47 /* btcnow.xcdatamodeld */; };
-		261026B5187C455300B13B47 /* Exchanger.m in Sources */ = {isa = PBXBuildFile; fileRef = 261026B4187C455300B13B47 /* Exchanger.m */; };
 		261026B8187C45F300B13B47 /* Ticker.m in Sources */ = {isa = PBXBuildFile; fileRef = 261026B7187C45F300B13B47 /* Ticker.m */; };
 		261026BC187C46F400B13B47 /* DataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 261026BB187C46F400B13B47 /* DataTransformer.m */; };
 		261026BF187C4C2800B13B47 /* ModelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 261026BE187C4C2800B13B47 /* ModelHelper.m */; };
@@ -20,6 +19,7 @@
 		26323B21187EC3E00028466D /* Gotham-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 26323B1A187EC3E00028466D /* Gotham-Medium.otf */; };
 		26323B22187EC3E00028466D /* Museo500-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 26323B1B187EC3E00028466D /* Museo500-Regular.otf */; };
 		2645FB80188FCF2200AA3B76 /* NewsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2645FB7F188FCF2200AA3B76 /* NewsListViewController.m */; };
+		269053091894D3F30023B3DC /* Exchanger.m in Sources */ = {isa = PBXBuildFile; fileRef = 269053081894D3F30023B3DC /* Exchanger.m */; };
 		26B6FE2D18917E99001129B8 /* FMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B6FE2C18917E99001129B8 /* FMViewController.m */; };
 		26B6FE3018917FE3001129B8 /* TTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B6FE2F18917FE3001129B8 /* TTViewController.m */; };
 		26B6FE3218918073001129B8 /* Movies.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26B6FE3118918073001129B8 /* Movies.plist */; };
@@ -65,8 +65,6 @@
 /* Begin PBXFileReference section */
 		030819D3657E4D16B1C1D88D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		261026AD187C43C600B13B47 /* btcnow.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = btcnow.xcdatamodel; sourceTree = "<group>"; };
-		261026B3187C455300B13B47 /* Exchanger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exchanger.h; sourceTree = "<group>"; };
-		261026B4187C455300B13B47 /* Exchanger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exchanger.m; sourceTree = "<group>"; };
 		261026B6187C45F300B13B47 /* Ticker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ticker.h; sourceTree = "<group>"; };
 		261026B7187C45F300B13B47 /* Ticker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ticker.m; sourceTree = "<group>"; };
 		261026BA187C46F400B13B47 /* DataTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataTransformer.h; path = btcnow/Logic/Models/DataTransformer.h; sourceTree = SOURCE_ROOT; };
@@ -83,6 +81,8 @@
 		2645FB7E188FCF2200AA3B76 /* NewsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsListViewController.h; sourceTree = "<group>"; };
 		2645FB7F188FCF2200AA3B76 /* NewsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsListViewController.m; sourceTree = "<group>"; };
 		26590BC1187B8D8C00034BE0 /* PassValueDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassValueDelegate.h; sourceTree = "<group>"; };
+		269053071894D3F30023B3DC /* Exchanger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exchanger.h; sourceTree = "<group>"; };
+		269053081894D3F30023B3DC /* Exchanger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exchanger.m; sourceTree = "<group>"; };
 		26971BF7187AFDE100F70FB1 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		26B6FE2B18917E99001129B8 /* FMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMViewController.h; sourceTree = "<group>"; };
 		26B6FE2C18917E99001129B8 /* FMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMViewController.m; sourceTree = "<group>"; };
@@ -160,12 +160,12 @@
 		261026B2187C455300B13B47 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				261026B3187C455300B13B47 /* Exchanger.h */,
-				261026B4187C455300B13B47 /* Exchanger.m */,
 				261026BA187C46F400B13B47 /* DataTransformer.h */,
 				261026BB187C46F400B13B47 /* DataTransformer.m */,
 				261026B6187C45F300B13B47 /* Ticker.h */,
 				261026B7187C45F300B13B47 /* Ticker.m */,
+				269053071894D3F30023B3DC /* Exchanger.h */,
+				269053081894D3F30023B3DC /* Exchanger.m */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -537,9 +537,9 @@
 				26DB25C5187517E500D332D0 /* UIView+frameAdjust.m in Sources */,
 				26DC43F71869CD9500EC9C66 /* AppDelegate.m in Sources */,
 				26DB25D71875272400D332D0 /* RightSideDrawerViewController.m in Sources */,
+				269053091894D3F30023B3DC /* Exchanger.m in Sources */,
 				26DC43F31869CD9500EC9C66 /* main.m in Sources */,
 				26B6FE3018917FE3001129B8 /* TTViewController.m in Sources */,
-				261026B5187C455300B13B47 /* Exchanger.m in Sources */,
 				26B6FE2D18917E99001129B8 /* FMViewController.m in Sources */,
 				261026B8187C45F300B13B47 /* Ticker.m in Sources */,
 				26DB25CE1875267300D332D0 /* CenterTableViewController.m in Sources */,

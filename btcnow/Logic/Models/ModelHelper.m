@@ -122,6 +122,7 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
     exchanger.url = [DataTransformer getUrl:json];
     exchanger.currency = [DataTransformer getCurrency:json];
     exchanger.status = [DataTransformer getStatusInt:json];
+    exchanger.selected = YES;
 }
 
 
