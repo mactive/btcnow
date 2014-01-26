@@ -92,8 +92,15 @@
 #define ICON_MINE       @"\uf058"
 
 // NSARRAY
-#define TYRE_HEIGHT     (IS_IPHONE_5 ? 180.0f : 160.0f)
-#define TYRE_WIDTH      (IS_IPHONE_5 ? 180.0f : 160.0f)
+#define IOS7_CONTENT_OFFSET_Y 64.0f
+#define STATUS_BAR_HEIGHT 20.0f
+#define TOP_HEIGHT 44.0f
+#define TABBAR_HEIGHT 44.0f
+#define SECTION_HEADER_HEIGHT 20.0f
+#define SECTION_FOOTER_HEIGHT 40.0f
+#define LABEL_HEIGHT   20.0f
+
+#define BUTTON_OFFSET 10.0f
 #define TOTAL_WIDTH     320.0f
 #define CELL_HEIGHT     40.0f
 #define NAV_BAR_HEIGHT 26.0f

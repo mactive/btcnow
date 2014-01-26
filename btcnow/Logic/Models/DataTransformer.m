@@ -94,6 +94,74 @@ static const int ddLogLevel = LOG_LEVEL_OFF;
 }
 
 
+#pragma mark - article
+
++ (NSString *)getArticleID:(id)jsonData
+{
+    return [DataTransformer getStringObj:jsonData byName:@"id"];
+}
+
++ (NSString *)getArticleURL:(id)jsonData{
+    return [DataTransformer getStringObj:jsonData byName:@"url"];
+}
+
++ (NSString *)getArticleTitle:(id)jsonData
+{
+    return [DataTransformer getStringObj:jsonData byName:@"title"];
+}
+
++ (NSString *)getArticleCover:(id)jsonData
+{
+    return [DataTransformer getStringObj:jsonData byName:@"cover"];
+}
+
++ (NSString *)getArticleSummary:(id)jsonData
+{
+    return [DataTransformer getStringObj:jsonData byName:@"intro"];
+}
+
++ (NSString *)getString:(NSString *)str byMax:(NSInteger)max
+{
+    if (str.length < max) {
+        return str;
+    }
+    NSString *result = [str substringToIndex:str.length-(str.length-max)];
+    return result;
+}
+
++ (NSInteger)getCountFromString:(NSString *)source useSubString:(NSString *)subString
+{
+    NSScanner *mainScanner = [NSScanner scannerWithString:source];
+    NSString *temp;
+    NSInteger numberOfChar = 0;
+    while(![mainScanner isAtEnd])
+    {
+        [mainScanner scanUpToString:subString intoString:&temp];
+        if(![mainScanner isAtEnd]) {
+            numberOfChar++;
+            [mainScanner scanString:subString intoString:nil];
+        }
+    }
+    //
+    //    NSInteger count = [[source componentsSeparatedByString:subString] count];
+    //    return count;
+    return numberOfChar;
+}
+
+
+
++ (NSDate *)getArticleDate:(id)jsonData
+{
+    NSString *dataString = [DataTransformer getStringObj:jsonData byName:@"time"];
+    return [DataTransformer dateFromNSDateStr:dataString];
+}
+
+
++ (NSString *)getArticleOrigin:(id)jsonData
+{
+    return [DataTransformer getStringObj:jsonData byName:@"origin"];
+}
+
 
 +(NSString *)getStringObj:(id)jsonData byName:(id)name
 {
@@ -263,23 +331,6 @@ static const int ddLogLevel = LOG_LEVEL_OFF;
     return status.integerValue;
 }
 
-+ (NSInteger)getCountFromString:(NSString *)source useSubString:(NSString *)subString
-{
-    NSScanner *mainScanner = [NSScanner scannerWithString:source];
-    NSString *temp;
-    NSInteger numberOfChar = 0;
-    while(![mainScanner isAtEnd])
-    {
-        [mainScanner scanUpToString:subString intoString:&temp];
-        if(![mainScanner isAtEnd]) {
-            numberOfChar++;
-            [mainScanner scanString:subString intoString:nil];
-        }
-    }
-    //
-    //    NSInteger count = [[source componentsSeparatedByString:subString] count];
-    //    return count;
-    return numberOfChar;
-}
+
 
 @end

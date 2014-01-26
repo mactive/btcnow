@@ -27,6 +27,15 @@
 + (NSDecimalNumber *)getLast:(id)jsonData;
 
 
+// article info
++ (NSString *)getArticleID:(id)jsonData;
++ (NSString *)getArticleURL:(id)jsonData;
++ (NSString *)getArticleTitle:(id)jsonData;
++ (NSString *)getArticleCover:(id)jsonData;
++ (NSString *)getArticleSummary:(id)jsonData;
++ (NSDate *)getArticleDate:(id)jsonData;
++ (NSString *)getArticleOrigin:(id)jsonData;
++ (NSInteger)getCountFromString:(NSString *)source useSubString:(NSString *)subString;
 
 
 

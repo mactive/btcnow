@@ -64,7 +64,7 @@ static const int ddLogLevel = LOG_LEVEL_OFF;
     NSString * lengthString = [NSString stringWithFormat:@"%i",length];
     
     NSDictionary *getDict = [NSDictionary dictionaryWithObjectsAndKeys:
-                              startString, @"start",
+                              startString, @"skip",
                               lengthString, @"length",
                               nil];
     

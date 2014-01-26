@@ -20,6 +20,9 @@
 		26323B22187EC3E00028466D /* Museo500-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 26323B1B187EC3E00028466D /* Museo500-Regular.otf */; };
 		2645FB80188FCF2200AA3B76 /* NewsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2645FB7F188FCF2200AA3B76 /* NewsListViewController.m */; };
 		269053091894D3F30023B3DC /* Exchanger.m in Sources */ = {isa = PBXBuildFile; fileRef = 269053081894D3F30023B3DC /* Exchanger.m */; };
+		2690530C1894DFA30023B3DC /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2690530B1894DFA30023B3DC /* WebViewController.m */; };
+		269053121894E0210023B3DC /* ArticleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2690530F1894E0210023B3DC /* ArticleTableViewCell.m */; };
+		269053131894E0210023B3DC /* ArticleTableViewCellSubView.m in Sources */ = {isa = PBXBuildFile; fileRef = 269053111894E0210023B3DC /* ArticleTableViewCellSubView.m */; };
 		26B6FE2D18917E99001129B8 /* FMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B6FE2C18917E99001129B8 /* FMViewController.m */; };
 		26B6FE3018917FE3001129B8 /* TTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B6FE2F18917FE3001129B8 /* TTViewController.m */; };
 		26B6FE3218918073001129B8 /* Movies.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26B6FE3118918073001129B8 /* Movies.plist */; };
@@ -83,6 +86,12 @@
 		26590BC1187B8D8C00034BE0 /* PassValueDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassValueDelegate.h; sourceTree = "<group>"; };
 		269053071894D3F30023B3DC /* Exchanger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exchanger.h; sourceTree = "<group>"; };
 		269053081894D3F30023B3DC /* Exchanger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exchanger.m; sourceTree = "<group>"; };
+		2690530A1894DFA30023B3DC /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		2690530B1894DFA30023B3DC /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		2690530E1894E0210023B3DC /* ArticleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleTableViewCell.h; sourceTree = "<group>"; };
+		2690530F1894E0210023B3DC /* ArticleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleTableViewCell.m; sourceTree = "<group>"; };
+		269053101894E0210023B3DC /* ArticleTableViewCellSubView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleTableViewCellSubView.h; sourceTree = "<group>"; };
+		269053111894E0210023B3DC /* ArticleTableViewCellSubView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleTableViewCellSubView.m; sourceTree = "<group>"; };
 		26971BF7187AFDE100F70FB1 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		26B6FE2B18917E99001129B8 /* FMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMViewController.h; sourceTree = "<group>"; };
 		26B6FE2C18917E99001129B8 /* FMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMViewController.m; sourceTree = "<group>"; };
@@ -184,6 +193,17 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		2690530D1894E0210023B3DC /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				2690530E1894E0210023B3DC /* ArticleTableViewCell.h */,
+				2690530F1894E0210023B3DC /* ArticleTableViewCell.m */,
+				269053101894E0210023B3DC /* ArticleTableViewCellSubView.h */,
+				269053111894E0210023B3DC /* ArticleTableViewCellSubView.m */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
 		26DB25B4187517E500D332D0 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,23 +234,18 @@
 		26DB25B8187517E500D332D0 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				26DB25B9187517E500D332D0 /* TableViewCells */,
+				2690530D1894E0210023B3DC /* TableViewCells */,
 				26DB25BA187517E500D332D0 /* ViewControllers */,
 				26DB25BB187517E500D332D0 /* Views */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
 		};
-		26DB25B9187517E500D332D0 /* TableViewCells */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TableViewCells;
-			sourceTree = "<group>";
-		};
 		26DB25BA187517E500D332D0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				2690530A1894DFA30023B3DC /* WebViewController.h */,
+				2690530B1894DFA30023B3DC /* WebViewController.m */,
 				26B6FE3118918073001129B8 /* Movies.plist */,
 				26B6FE2B18917E99001129B8 /* FMViewController.h */,
 				26B6FE2C18917E99001129B8 /* FMViewController.m */,
@@ -530,13 +545,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				269053131894E0210023B3DC /* ArticleTableViewCellSubView.m in Sources */,
 				261026AE187C43C600B13B47 /* btcnow.xcdatamodeld in Sources */,
 				261026BC187C46F400B13B47 /* DataTransformer.m in Sources */,
+				2690530C1894DFA30023B3DC /* WebViewController.m in Sources */,
 				26DB25CB1875260E00D332D0 /* BNViewController.m in Sources */,
 				26DB25D41875271200D332D0 /* LeftSideDrawerViewController.m in Sources */,
 				26DB25C5187517E500D332D0 /* UIView+frameAdjust.m in Sources */,
 				26DC43F71869CD9500EC9C66 /* AppDelegate.m in Sources */,
 				26DB25D71875272400D332D0 /* RightSideDrawerViewController.m in Sources */,
+				269053121894E0210023B3DC /* ArticleTableViewCell.m in Sources */,
 				269053091894D3F30023B3DC /* Exchanger.m in Sources */,
 				26DC43F31869CD9500EC9C66 /* main.m in Sources */,
 				26B6FE3018917FE3001129B8 /* TTViewController.m in Sources */,
