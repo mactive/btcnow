@@ -6,21 +6,23 @@
 //  Copyright (c) 2014年 thinktube. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "LeftSideDrawerViewController.h"
 #import "AppRequester.h"
 #import "AppDelegate.h"
 #import "ModelHelper.h"
+#import <FMMoveTableView/FMMoveTableView.h>
+#import <FMMoveTableView/FMMoveTableViewCell.h>
 
-@interface LeftSideDrawerViewController ()<UITableViewDataSource, UITableViewDelegate>
-@property(nonatomic, strong)UITableView *tableview;
-@property(nonatomic, strong)NSArray *dataSource;
-@property(nonatomic, strong)NSArray *sectionArray;
+@interface LeftSideDrawerViewController ()<FMMoveTableViewDataSource, FMMoveTableViewDelegate>
+@property(nonatomic, strong)FMMoveTableView *tableview;
+@property(nonatomic, strong)NSMutableArray *dataSource;
+@property(nonatomic, strong)UIButton *editingButton;
 @end
 
 @implementation LeftSideDrawerViewController
 @synthesize tableView;
 @synthesize dataSource;
-@synthesize sectionArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,11 +37,21 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    self.title = T(@"长按调整排序");
+    
+    self.editingButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.editingButton.frame=CGRectMake(0, 0, 50, 29);
+    [self.editingButton setTitle:T(@"排序") forState:UIControlStateNormal];
+    [self.editingButton addTarget:self action:@selector(editingButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.editingButton];
+    
+    
+    CGRect frame = self.view.bounds;
+    frame.size.width = LEFT_MAX_WIDTH;
+    self.tableView = [[FMMoveTableView alloc]initWithFrame:frame style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    self.sectionArray = [NSArray arrayWithObjects:@"交易所", @"帮助", @"关于", nil];
     [self.view addSubview:self.tableView];
 
 }
@@ -52,49 +64,82 @@
 
 - (void)refreshExchangers
 {
-    self.dataSource = XAppDelegate.exchangers;
+    self.dataSource = [[NSMutableArray alloc]initWithArray: XAppDelegate.exchangers];
     [self.tableView reloadData];
 }
 
 #pragma mark - tableview datashource
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+
+- (NSInteger)numberOfSectionsInTableView:(FMMoveTableView *)tableView
 {
-    return [self.sectionArray count];
+    return 1;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+
+- (NSInteger)tableView:(FMMoveTableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.sectionArray objectAtIndex:section];
+    return [self.dataSource count];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+#pragma mark - tableview delegate
+
+- (void)editingButtonAction
 {
-    if (section == 0) {
-        return [self.dataSource count];
+    if (self.tableView.editing) {
+        [self.tableView setEditing:NO animated:NO];
     }else{
-        return 3;
+        [self.tableView setEditing:YES animated:YES];
+        
     }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)moveTableView:(FMMoveTableView *)tableView moveRowFromIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
-    static NSString *CellIdentifier = @"AddFriendCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    id thing = [self.dataSource objectAtIndex:fromIndexPath.row];
+    [self.dataSource removeObjectAtIndex:fromIndexPath.row];
+    [self.dataSource insertObject:thing atIndex:toIndexPath.row];   
+}
+
+//- (void)tableView:(FMMoveTableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+//{
+//    id thing = [self.dataSource objectAtIndex:sourceIndexPath.row];
+//    [self.dataSource removeObjectAtIndex:sourceIndexPath.row];
+//    [self.dataSource insertObject:thing atIndex:destinationIndexPath.row];
+//    NSLog(@"%@",thing);
+//}
+- (BOOL)tableView:(FMMoveTableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+- (NSIndexPath *)moveTableView:(FMMoveTableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
+{
+	//	Uncomment these lines to enable moving a row just within it's current section
+	//	if ([sourceIndexPath section] != [proposedDestinationIndexPath section]) {
+	//		proposedDestinationIndexPath = sourceIndexPath;
+	//	}
+	
+	return proposedDestinationIndexPath;
+}
+
+#pragma mark - FmmoveTableView
+
+
+- (FMMoveTableViewCell *)tableView:(FMMoveTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"LeftDrawerCell";
+    FMMoveTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-    }
-    NSInteger section = indexPath.section;
-    if (section == 0){
-        Exchanger *rowData = [self.dataSource objectAtIndex:indexPath.row];
-        cell.textLabel.text = rowData.name;
-    }else{
-        cell.textLabel.text = @"xxx";
+        cell = [[FMMoveTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
 
+    Exchanger *rowData = [self.dataSource objectAtIndex:indexPath.row];
+    cell.textLabel.text = rowData.name;
+    
     
     return cell;
 }
+
 
 
 - (void)didReceiveMemoryWarning

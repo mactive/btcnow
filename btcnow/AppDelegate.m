@@ -52,19 +52,29 @@ static const int ddLogLevel = LOG_LEVEL_OFF;
     UINavigationController *navigationController = [[BNNavigationController alloc]initWithRootViewController:centerViewController];
     [navigationController setRestorationIdentifier:@"CenterNavigationControllerRestorationKey"];
     
+    UINavigationController *leftSideNavController = [[BNNavigationController alloc]initWithRootViewController:leftSideDrawerViewController];
+    [leftSideNavController setRestorationIdentifier:@"MMExampleLeftNavigationControllerRestorationKey"];
+
+
     
     if(OSVersionIsAtLeastiOS7()){
-        // TODO iOS7
+        UINavigationController * rightSideNavController = [[BNNavigationController alloc] initWithRootViewController:rightSideDrawerViewController];
+		[rightSideNavController setRestorationIdentifier:@"MMExampleRightNavigationControllerRestorationKey"];
+        self.drawerController = [[MMDrawerController alloc]
+                                 initWithCenterViewController:navigationController
+                                 leftDrawerViewController:leftSideNavController
+                                 rightDrawerViewController:rightSideNavController];
+        [self.drawerController setShowsShadow:NO];
     }else{
         self.drawerController = [[MMDrawerController alloc]
                                  initWithCenterViewController:navigationController
-                                 leftDrawerViewController:leftSideDrawerViewController
+                                 leftDrawerViewController:leftSideNavController
                                  rightDrawerViewController:rightSideDrawerViewController];
     }
     
     
     [self.drawerController setRestorationIdentifier:@"MMDrawer"];
-    [self.drawerController setMaximumRightDrawerWidth:200.0];
+    [self.drawerController setMaximumLeftDrawerWidth:LEFT_MAX_WIDTH];
     [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
     

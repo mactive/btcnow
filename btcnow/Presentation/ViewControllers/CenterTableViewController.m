@@ -14,16 +14,20 @@
 #import "LeftSideDrawerViewController.h"
 #import "RightSideDrawerViewController.h"
 #import "BNNavigationController.h"
+#import "NewsListViewController.h"
+#import "FMViewController.h"
 
 @interface CenterTableViewController ()
 @property(nonatomic, strong)NSDictionary *dataSource;
 @property(nonatomic, strong)NSArray *dataKeys;
+@property(nonatomic, strong)UIView *footerView;
 @end
 
 @implementation CenterTableViewController
 @synthesize tableView;
 @synthesize dataSource;
 @synthesize dataKeys;
+@synthesize footerView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,7 +43,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     [self.tableView setDelegate:self];
     [self.tableView setDataSource:self];
     [self.view addSubview:self.tableView];
@@ -49,6 +53,25 @@
     
     [self setupLeftMenuButton];
     [self setupRightMenuButton];
+    
+    [self initFooterView];
+}
+
+- (void)initFooterView
+{
+    self.footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, TOTAL_WIDTH, CELL_HEIGHT)];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button setTitle:T(@"浏览文章") forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(viewNewsAction) forControlEvents:UIControlEventTouchUpInside];
+    [button setFrame:CGRectMake(20, 10, 280, 40)];
+    [self.footerView addSubview:button];
+    self.tableView.tableFooterView = self.footerView;
+}
+
+- (void)viewNewsAction
+{
+    FMViewController *viewController = [[FMViewController alloc]initWithNibName:nil bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated

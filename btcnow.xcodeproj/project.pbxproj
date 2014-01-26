@@ -19,6 +19,10 @@
 		26323B20187EC3E00028466D /* Gotham-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 26323B19187EC3E00028466D /* Gotham-Light.otf */; };
 		26323B21187EC3E00028466D /* Gotham-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 26323B1A187EC3E00028466D /* Gotham-Medium.otf */; };
 		26323B22187EC3E00028466D /* Museo500-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 26323B1B187EC3E00028466D /* Museo500-Regular.otf */; };
+		2645FB80188FCF2200AA3B76 /* NewsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2645FB7F188FCF2200AA3B76 /* NewsListViewController.m */; };
+		26B6FE2D18917E99001129B8 /* FMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B6FE2C18917E99001129B8 /* FMViewController.m */; };
+		26B6FE3018917FE3001129B8 /* TTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B6FE2F18917FE3001129B8 /* TTViewController.m */; };
+		26B6FE3218918073001129B8 /* Movies.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26B6FE3118918073001129B8 /* Movies.plist */; };
 		26DB25C5187517E500D332D0 /* UIView+frameAdjust.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DB25C3187517E500D332D0 /* UIView+frameAdjust.m */; };
 		26DB25C8187525F500D332D0 /* BNNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DB25C7187525F500D332D0 /* BNNavigationController.m */; };
 		26DB25CB1875260E00D332D0 /* BNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DB25CA1875260E00D332D0 /* BNViewController.m */; };
@@ -76,8 +80,15 @@
 		26323B19187EC3E00028466D /* Gotham-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Light.otf"; sourceTree = "<group>"; };
 		26323B1A187EC3E00028466D /* Gotham-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Medium.otf"; sourceTree = "<group>"; };
 		26323B1B187EC3E00028466D /* Museo500-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Museo500-Regular.otf"; sourceTree = "<group>"; };
+		2645FB7E188FCF2200AA3B76 /* NewsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsListViewController.h; sourceTree = "<group>"; };
+		2645FB7F188FCF2200AA3B76 /* NewsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsListViewController.m; sourceTree = "<group>"; };
 		26590BC1187B8D8C00034BE0 /* PassValueDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassValueDelegate.h; sourceTree = "<group>"; };
 		26971BF7187AFDE100F70FB1 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
+		26B6FE2B18917E99001129B8 /* FMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMViewController.h; sourceTree = "<group>"; };
+		26B6FE2C18917E99001129B8 /* FMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMViewController.m; sourceTree = "<group>"; };
+		26B6FE2E18917FE3001129B8 /* TTViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTViewController.h; sourceTree = "<group>"; };
+		26B6FE2F18917FE3001129B8 /* TTViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTViewController.m; sourceTree = "<group>"; };
+		26B6FE3118918073001129B8 /* Movies.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Movies.plist; sourceTree = "<group>"; };
 		26DB25BF187517E500D332D0 /* AppDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDefs.h; sourceTree = "<group>"; };
 		26DB25C2187517E500D332D0 /* UIView+frameAdjust.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+frameAdjust.h"; sourceTree = "<group>"; };
 		26DB25C3187517E500D332D0 /* UIView+frameAdjust.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+frameAdjust.m"; sourceTree = "<group>"; };
@@ -220,6 +231,9 @@
 		26DB25BA187517E500D332D0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				26B6FE3118918073001129B8 /* Movies.plist */,
+				26B6FE2B18917E99001129B8 /* FMViewController.h */,
+				26B6FE2C18917E99001129B8 /* FMViewController.m */,
 				26DB25C6187525F500D332D0 /* BNNavigationController.h */,
 				26DB25C7187525F500D332D0 /* BNNavigationController.m */,
 				26DB25C91875260E00D332D0 /* BNViewController.h */,
@@ -232,6 +246,10 @@
 				26DB25D31875271200D332D0 /* LeftSideDrawerViewController.m */,
 				26DB25D51875272400D332D0 /* RightSideDrawerViewController.h */,
 				26DB25D61875272400D332D0 /* RightSideDrawerViewController.m */,
+				2645FB7E188FCF2200AA3B76 /* NewsListViewController.h */,
+				2645FB7F188FCF2200AA3B76 /* NewsListViewController.m */,
+				26B6FE2E18917FE3001129B8 /* TTViewController.h */,
+				26B6FE2F18917FE3001129B8 /* TTViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -450,6 +468,7 @@
 				26DB25E6187553B900D332D0 /* 80.png in Resources */,
 				26323B1D187EC3E00028466D /* Gotham-Black.otf in Resources */,
 				26323B1F187EC3E00028466D /* Gotham-Book.otf in Resources */,
+				26B6FE3218918073001129B8 /* Movies.plist in Resources */,
 				26DB25DB187550EF00D332D0 /* 5s.png in Resources */,
 				26DC43F11869CD9500EC9C66 /* InfoPlist.strings in Resources */,
 				26323B1C187EC3E00028466D /* FontAwesome.otf in Resources */,
@@ -519,9 +538,12 @@
 				26DC43F71869CD9500EC9C66 /* AppDelegate.m in Sources */,
 				26DB25D71875272400D332D0 /* RightSideDrawerViewController.m in Sources */,
 				26DC43F31869CD9500EC9C66 /* main.m in Sources */,
+				26B6FE3018917FE3001129B8 /* TTViewController.m in Sources */,
 				261026B5187C455300B13B47 /* Exchanger.m in Sources */,
+				26B6FE2D18917E99001129B8 /* FMViewController.m in Sources */,
 				261026B8187C45F300B13B47 /* Ticker.m in Sources */,
 				26DB25CE1875267300D332D0 /* CenterTableViewController.m in Sources */,
+				2645FB80188FCF2200AA3B76 /* NewsListViewController.m in Sources */,
 				26DB25D11875269400D332D0 /* SideDrawerViewController.m in Sources */,
 				261026BF187C4C2800B13B47 /* ModelHelper.m in Sources */,
 				26DBC3D81875B8D700A30550 /* AppRequester.m in Sources */,
@@ -652,7 +674,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "btcnow/btcnow-Prefix.pch";
 				INFOPLIST_FILE = "btcnow/btcnow-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -672,7 +694,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "btcnow/btcnow-Prefix.pch";
 				INFOPLIST_FILE = "btcnow/btcnow-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;

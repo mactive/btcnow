@@ -86,9 +86,10 @@
 // NSARRAY
 #define TYRE_HEIGHT     (IS_IPHONE_5 ? 180.0f : 160.0f)
 #define TYRE_WIDTH      (IS_IPHONE_5 ? 180.0f : 160.0f)
-#define TOTAL_WIDTH 320.0f
-
+#define TOTAL_WIDTH     320.0f
+#define CELL_HEIGHT     60.0f
 #define NAV_BAR_HEIGHT 26.0f
+#define LEFT_MAX_WIDTH 260.0f
 
 
 // Color helpers

@@ -63,12 +63,12 @@ static const int ddLogLevel = LOG_LEVEL_OFF;
     NSString * startString = [NSString stringWithFormat:@"%i",start];
     NSString * lengthString = [NSString stringWithFormat:@"%i",length];
     
-    NSDictionary *postDict = [NSDictionary dictionaryWithObjectsAndKeys:
+    NSDictionary *getDict = [NSDictionary dictionaryWithObjectsAndKeys:
                               startString, @"start",
                               lengthString, @"length",
                               nil];
     
-    [[AppRequester sharedManager]POST:API_NEWS_PATH parameters:postDict success:^(AFHTTPRequestOperation *operation, id responseObject){
+    [[AppRequester sharedManager]GET:API_NEWS_PATH parameters:getDict success:^(AFHTTPRequestOperation *operation, id responseObject){
         if(responseObject != nil) {
             if (block) {
                 block(responseObject , nil);

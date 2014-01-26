@@ -53,13 +53,7 @@
 
 - (void)refreshExchangers
 {
-    [[AppRequester sharedManager]getNewsWithStrat:0 length:20 andBlock:^(id responseObject, NSError *error) {
-        //
-        if (responseObject != nil) {
-            self.dataSource = XAppDelegate.exchangers;
-            [self.tableView reloadData];
-        }
-    }];
+
 }
 
 #pragma mark - tableview datashource
