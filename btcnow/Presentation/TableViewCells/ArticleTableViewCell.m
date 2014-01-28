@@ -27,7 +27,7 @@
     if (self) {
         // Initialization code
         self.selectionStyle = UITableViewCellSelectionStyleBlue;
-        self.subView = [[ArticleTableViewCellSubView alloc]initWithFrame:CGRectMake(0, 0, TOTAL_HEIGHT, CELL_HEIGHT)];
+        self.subView = [[ArticleTableViewCellSubView alloc]initWithFrame:CGRectMake(0, 0, TOTAL_HEIGHT, CELL_HIGH_HEIGHT)];
         [self.contentView addSubview:self.subView];
     }
     return self;

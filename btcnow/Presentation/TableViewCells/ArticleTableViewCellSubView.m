@@ -37,14 +37,14 @@
 #define AVA_Y       5.0f
 
 #define MIDDLE_COLUMN_OFFSET 20.0
-#define MIDDLE_COLUMN_WIDTH 200.0
+#define MIDDLE_COLUMN_WIDTH 300.0
 
-#define SUMMARY_PADDING 10.0
-#define SUMMARY_WIDTH 200.0
-#define ORIGIN_W 85.0
+#define SUMMARY_PADDING     10.0
+#define SUMMARY_WIDTH       300.0
+#define ORIGIN_W            85.0
 
-#define MAIN_FONT_SIZE 14.0
-#define SUMMARY_FONT_SIZE 12.0
+#define MAIN_FONT_SIZE      14.0
+#define SUMMARY_FONT_SIZE   12.0
 
 - (void)setNewData:(NSDictionary *)_data
 {
@@ -83,38 +83,37 @@
     }
     
     
-    
     UIFont *smallFont = [UIFont systemFontOfSize:SUMMARY_FONT_SIZE];
     UIFont *smallBoldFont = [UIFont boldSystemFontOfSize:SUMMARY_FONT_SIZE];
-    
+    NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+    paragraphStyle.alignment = NSTextAlignmentLeft;
     
     // summary
     NSString * signatureString = [DataTransformer getArticleSummary:self.data];
-    signatureString = [DataTransformer getString:signatureString byMax:20];
+    signatureString = [DataTransformer getString:signatureString byMax:60];
     UIColor *signatureMagentaColor = GRAYCOLOR;
     [signatureMagentaColor set];
     
     if ([signatureString length] != 0 && signatureString != nil ) {
-        CGSize summaryMaxSize = CGSizeMake(SUMMARY_WIDTH, LABEL_HEIGHT*2);
-        CGFloat _labelHeight;
-        CGSize signatureSize = [signatureString sizeWithFont:smallFont constrainedToSize:summaryMaxSize lineBreakMode: NSLineBreakByTruncatingTail];
-        if (signatureSize.height > LABEL_HEIGHT) {
-            _labelHeight = 25.0;
-        }else {
-            _labelHeight = 25.0; //
-        }
+        CGSize summaryMaxSize = CGSizeMake(SUMMARY_WIDTH, LABEL_HEIGHT*4);
+        CGFloat _labelHeight = 45.0f;
+//        CGSize signatureSize = [signatureString sizeWithAttributes:];
+        CGRect signatureSize = [signatureString boundingRectWithSize:summaryMaxSize  options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17.0f]} context:nil];
         
-        CGRect signRect = CGRectMake(MIDDLE_COLUMN_OFFSET, _labelHeight, signatureSize.width + SUMMARY_PADDING, signatureSize.height+SUMMARY_PADDING);
-        [signatureString drawInRect:signRect withFont:smallFont lineBreakMode:NSLineBreakByTruncatingTail alignment:NSTextAlignmentLeft];
+        NSLog(@"signatureSize %f, %f:",signatureSize.size.height, signatureSize.size.width);
+        
+        CGRect signRect = CGRectMake(MIDDLE_COLUMN_OFFSET, _labelHeight, signatureSize.size.width, 60);
+        [signatureString drawInRect:signRect withAttributes:@{NSFontAttributeName:smallFont,
+                                                              NSParagraphStyleAttributeName: paragraphStyle}];
     }
     
     // origin
     NSString * originString = [DataTransformer getArticleOrigin:self.data];
     UIColor *originMagentaColor = GRAYCOLOR;
     [originMagentaColor set];
-    CGRect originRect = CGRectMake(TOTAL_WIDTH - ORIGIN_W - SUMMARY_PADDING, 40, ORIGIN_W, LABEL_HEIGHT);
+    CGRect originRect = CGRectMake(TOTAL_WIDTH - ORIGIN_W - SUMMARY_PADDING, 25, ORIGIN_W, LABEL_HEIGHT);
     [originString drawInRect:originRect withFont:smallBoldFont lineBreakMode:NSLineBreakByTruncatingTail alignment:NSTextAlignmentRight];
-    
     
 }
 

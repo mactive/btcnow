@@ -93,18 +93,20 @@
 
 // NSARRAY
 #define IOS7_CONTENT_OFFSET_Y 64.0f
-#define STATUS_BAR_HEIGHT 20.0f
-#define TOP_HEIGHT 44.0f
-#define TABBAR_HEIGHT 44.0f
+#define STATUS_BAR_HEIGHT   20.0f
+#define TOP_HEIGHT          44.0f
+#define TABBAR_HEIGHT       44.0f
 #define SECTION_HEADER_HEIGHT 20.0f
 #define SECTION_FOOTER_HEIGHT 40.0f
-#define LABEL_HEIGHT   20.0f
+#define LABEL_HEIGHT        20.0f
 
-#define BUTTON_OFFSET 10.0f
-#define TOTAL_WIDTH     320.0f
-#define CELL_HEIGHT     40.0f
-#define NAV_BAR_HEIGHT 26.0f
-#define LEFT_MAX_WIDTH 240.0f
+#define BUTTON_OFFSET       10.0f
+#define TOTAL_WIDTH         320.0f
+#define CELL_HEIGHT         40.0f
+#define CELL_HIGH_HEIGHT    100.0f
+#define NAV_BAR_HEIGHT      26.0f
+#define LEFT_MAX_WIDTH      240.0f
+#define RIGHT_MAX_WIDTH     200.0f
 
 
 // Color helpers

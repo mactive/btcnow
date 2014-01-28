@@ -198,7 +198,7 @@
 #pragma mark UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CELL_HEIGHT;
+    return CELL_HIGH_HEIGHT;
 }
 
 #pragma mark -
