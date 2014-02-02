@@ -21,6 +21,8 @@ static const int ddLogLevel = LOG_LEVEL_OFF;
 
 #define DATETIME_FORMATE @"yyyy-MM-dd hh:mm:ss"
 #define DATE_FORMATE @"yyyy-MM-dd"
+#define DATE_U_FORMAT @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+
 
 
 @interface DataTransformer ()
@@ -153,7 +155,8 @@ static const int ddLogLevel = LOG_LEVEL_OFF;
 + (NSDate *)getArticleDate:(id)jsonData
 {
     NSString *dataString = [DataTransformer getStringObj:jsonData byName:@"time"];
-    return [DataTransformer dateFromNSDateStr:dataString];
+    NSDate *tt =[DataTransformer dateFromNSDatetimeStr:dataString];
+    return tt;
 }
 
 
@@ -211,7 +214,7 @@ static const int ddLogLevel = LOG_LEVEL_OFF;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:DATETIME_FORMATE];
+        [dateFormatter setDateFormat:DATE_U_FORMAT];
     });
     
     return [dateFormatter dateFromString:dateStr];
