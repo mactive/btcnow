@@ -103,7 +103,7 @@
 #define BUTTON_OFFSET       10.0f
 #define TOTAL_WIDTH         320.0f
 #define CELL_HEIGHT         40.0f
-#define CELL_HIGH_HEIGHT    110.0f
+#define CELL_HIGH_HEIGHT    130.0f
 #define NAV_BAR_HEIGHT      26.0f
 #define LEFT_MAX_WIDTH      240.0f
 #define RIGHT_MAX_WIDTH     200.0f

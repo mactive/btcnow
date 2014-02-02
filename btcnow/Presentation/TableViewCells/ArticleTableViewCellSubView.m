@@ -93,12 +93,12 @@
     NSString * signatureString = [DataTransformer getArticleSummary:self.data];
     
     if ([signatureString length] != 0 && signatureString != nil ) {
-        CGSize summaryMaxSize = CGSizeMake(SUMMARY_WIDTH, LABEL_HEIGHT*4);
+        CGSize summaryMaxSize = CGSizeMake(SUMMARY_WIDTH, LABEL_HEIGHT*5);
         CGFloat _labelHeight = 50.0f;
 //        CGSize signatureSize = [signatureString sizeWithAttributes:];
         CGRect signatureSize = [signatureString boundingRectWithSize:summaryMaxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17.0f]} context:nil];
                 
-        CGRect signRect = CGRectMake(MIDDLE_COLUMN_OFFSET, _labelHeight, signatureSize.size.width, 60);
+        CGRect signRect = CGRectMake(MIDDLE_COLUMN_OFFSET, _labelHeight, signatureSize.size.width, signatureSize.size.height);
         [signatureString drawInRect:signRect withAttributes:@{NSFontAttributeName:smallFont,
                                                               NSParagraphStyleAttributeName: paragraphStyle}];
     }
