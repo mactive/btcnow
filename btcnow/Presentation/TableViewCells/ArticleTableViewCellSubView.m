@@ -75,16 +75,16 @@
     
     if ([nameString length] != 0) {
         CGSize nameMaxSize = CGSizeMake(MIDDLE_COLUMN_WIDTH, LABEL_HEIGHT);
-        CGSize nameSize = [[DataTransformer getArticleTitle:self.data] sizeWithFont:nameFont constrainedToSize:nameMaxSize lineBreakMode:NSLineBreakByTruncatingTail];
-        nameRect = CGRectMake(MIDDLE_COLUMN_OFFSET, 7, nameSize.width + SUMMARY_PADDING, nameSize.height);
-        genderRect = CGRectMake(MIDDLE_COLUMN_OFFSET + nameSize.width +10, 10.5, 15, 15);
-        friendRect = CGRectMake(MIDDLE_COLUMN_OFFSET + nameSize.width +30, 10.5, 30, 15);
-        [nameString drawInRect:nameRect withFont:nameFont];
+        CGRect nameSize = [nameString boundingRectWithSize:nameMaxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:nameFont} context:nil];
+        
+        nameRect = CGRectMake(MIDDLE_COLUMN_OFFSET, 7, nameSize.size.width + SUMMARY_PADDING, nameSize.size.height);
+        genderRect = CGRectMake(MIDDLE_COLUMN_OFFSET + nameSize.size.width +10, 10.5, 15, 15);
+        friendRect = CGRectMake(MIDDLE_COLUMN_OFFSET + nameSize.size.width +30, 10.5, 30, 15);
+        [nameString drawInRect:nameRect withAttributes:@{NSFontAttributeName: nameFont}];
     }
     
     
     UIFont *smallFont = [UIFont systemFontOfSize:SUMMARY_FONT_SIZE];
-    UIFont *smallBoldFont = [UIFont boldSystemFontOfSize:SUMMARY_FONT_SIZE];
     NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     paragraphStyle.lineBreakMode = NSLineBreakByCharWrapping;
     paragraphStyle.alignment = NSTextAlignmentLeft;
@@ -96,7 +96,7 @@
         CGSize summaryMaxSize = CGSizeMake(SUMMARY_WIDTH, LABEL_HEIGHT*4);
         CGFloat _labelHeight = 50.0f;
 //        CGSize signatureSize = [signatureString sizeWithAttributes:];
-        CGRect signatureSize = [signatureString boundingRectWithSize:summaryMaxSize  options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17.0f]} context:nil];
+        CGRect signatureSize = [signatureString boundingRectWithSize:summaryMaxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17.0f]} context:nil];
                 
         CGRect signRect = CGRectMake(MIDDLE_COLUMN_OFFSET, _labelHeight, signatureSize.size.width, 60);
         [signatureString drawInRect:signRect withAttributes:@{NSFontAttributeName:smallFont,
