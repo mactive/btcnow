@@ -8,12 +8,9 @@
 
 #import "CenterTableViewController.h"
 #import "AppRequester.h"
-
+#import "AppDelegate.h"
+#import "Exchanger.h"
 #import "UIViewController+MMDrawerController.h"
-#import "MMDrawerBarButtonItem.h"
-#import "LeftSideDrawerViewController.h"
-#import "RightSideDrawerViewController.h"
-#import "BNNavigationController.h"
 #import "NewsListViewController.h"
 #import "FMViewController.h"
 #import "PassValueDelegate.h"
@@ -21,7 +18,8 @@
 
 @interface CenterTableViewController ()<PassValueDelegate>
 @property(nonatomic, strong)UIView *footerView;
-@property(nonatomic, strong)NSArray *storedKeys;
+@property(nonatomic, strong)NSMutableArray *storedKeys;
+@property(nonatomic, strong)NSTimer *loopTimer;
 @end
 
 @implementation CenterTableViewController
@@ -30,6 +28,7 @@
 @synthesize dataKeys;
 @synthesize storedKeys;
 @synthesize footerView;
+@synthesize loopTimer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -57,6 +56,17 @@
     [self setupRightMenuButton];
     
     [self initFooterView];
+    
+}
+
+- (void)refreshData
+{
+    [[AppRequester sharedManager]getTickerDataWithBlock:^(id responseObject, NSError *error) {
+        //
+        self.dataSource = [responseObject objectForKey:@"btc"];
+        
+        [self.tableView reloadData];
+    }];
 }
 
 - (void)initFooterView
@@ -76,18 +86,39 @@
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
+//TODO 10 seconds request once
+//TODO remember the selected keys
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [[AppRequester sharedManager]getTickerDataWithBlock:^(id responseObject, NSError *error) {
-        //
-        self.dataSource = [responseObject objectForKey:@"btc"];
-        self.storedKeys = [self.dataSource allKeys];
-        self.dataKeys = [[NSMutableArray alloc]initWithArray: self.storedKeys];
-        [self.tableView reloadData];
-    }];
+    
+    self.loopTimer = [NSTimer
+                      scheduledTimerWithTimeInterval:(2.0)
+                      target:self
+                      selector:@selector(refreshData)
+                      userInfo:nil
+                      repeats:YES];
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [self.loopTimer invalidate];
+}
+
+
+- (void)getExchangersWithSelected
+{
+    self.dataKeys = [[NSMutableArray alloc]init];
+
+    NSArray *exchangers = XAppDelegate.exchangers;
+    for (int i=0; i< [exchangers count]; i++) {
+        Exchanger *theExchanger = [exchangers objectAtIndex:i];
+        [self.dataKeys addObject:theExchanger.shortname];
+    }
+    
+}
 
 
 #pragma mark -- BarButton Item
@@ -150,7 +181,9 @@
     NSDictionary *cellData = [self.dataSource objectForKey:[self.dataKeys objectAtIndex:indexPath.row]];
     NSDictionary *nowData = [cellData objectForKey:@"now"];
     
-    cell.textLabel.text = [self.dataKeys objectAtIndex:indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@",
+    [self.dataKeys objectAtIndex:indexPath.row], [self upOrDown:cellData]];
+    
     cell.detailTextLabel.text = [NSString stringWithFormat:@"last %@ high %@",
                                     [nowData objectForKey:@"last"],
                                     [nowData objectForKey:@"high"]
@@ -168,31 +201,65 @@
     NSDictionary *nowDict = item[@"now"];
     
     if ( [(NSString *)nowDict[@"sell"] integerValue] > [(NSString *)lastDict[@"sell"] integerValue] ) {
-        return @"UP";
+        return @"↑";
     }else{
-        return @"DOWN";
+        return @"↓";
     }
 }
 
 - (void)passStringValue:(NSString *)value andIndex:(NSUInteger)index
 {
     NSLog(@"PASS: %@",value);
-    // 0 remove 1 add
-    if (index == 0) {
-        [self.dataKeys removeObject:value];
-    }else if(index == 1){
-        [self.dataKeys addObject:value];
+
+    
+    if ([value isEqualToString:@"SYNC_EXCHANGERS"]) {
+        [self getExchangersWithSelected];
+    }else{
+        // 0 remove 1 add
+        if (index == 0) {
+            [self.dataKeys removeObject:value];
+        }else if(index == 1){
+            [self.dataKeys addObject:value];
+        }
     }
+    
+    self.dataKeys = [self sortExchangers:self.dataKeys];
     
     [self.tableView reloadData];
 }
 
 
-// resort the exchangers array
-- (void)sortExchangers:(NSArray *)sourceArray
+
+
+- (NSMutableArray *)sortExchangers:(NSArray *)sourceArray
 {
+    NSMutableArray *sourceMutableArray = [[NSMutableArray alloc]initWithArray:sourceArray];
     
+    NSSortDescriptor *sortDescriptor;
+    sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@""
+                                                ascending:YES];
+    NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+
+    [sourceMutableArray sortUsingDescriptors:sortDescriptors];
+    
+    return sourceMutableArray;
 }
+
+// resort the exchangers array
+// another way
+//- (NSMutableArray *)sortExchangers:(NSArray *)sourceArray
+//{
+//    NSArray *sortedArray = [[NSArray alloc]init];
+//
+//
+//    sortedArray = [sourceArray sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+//        NSString *first = obj1;
+//        NSString *second = obj2;
+//        return [first compare:second];
+//    }];
+//    return [[NSMutableArray alloc]initWithArray: sortedArray];
+//}
+
 
 
 - (void)didReceiveMemoryWarning

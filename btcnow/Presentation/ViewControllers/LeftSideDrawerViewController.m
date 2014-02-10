@@ -158,6 +158,7 @@
         [self.delegate passStringValue:theExchanger.shortname andIndex:1];
     }
     theExchanger.selected = !theExchanger.selected;
+
     
     [self.tableView beginUpdates];
     NSArray *indexPaths = [[NSArray alloc] initWithObjects:indexPath, nil];

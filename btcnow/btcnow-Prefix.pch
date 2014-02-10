@@ -16,6 +16,7 @@
     #import <CoreData/CoreData.h>
     #import "AppDefs.h"
     #import "DataTransformer.h"
+    #import "LoggerClient.h"
 #endif
 
 static BOOL OSVersionIsAtLeastiOS7() {

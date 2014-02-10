@@ -10,6 +10,7 @@
 #import "MMDrawerController.h"
 #import "MMDrawerVisualState.h"
 #import "ModelHelper.h"
+#import "PassValueDelegate.h"
 #import "DDLog.h"
 #import "DDTTYLogger.h"
 
@@ -31,6 +32,8 @@ static const int ddLogLevel = LOG_LEVEL_OFF;
 @interface AppDelegate()
 
 @property (nonatomic,strong) MMDrawerController * drawerController;
+@property(nonatomic,assign) NSObject<PassValueDelegate> *passDelegate;
+
 @end
 
 @implementation AppDelegate
@@ -39,17 +42,21 @@ static const int ddLogLevel = LOG_LEVEL_OFF;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 @synthesize exchangers;
+@synthesize passDelegate;
 
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    LoggerSetViewerHost(NULL, (CFStringRef)@"127.0.0.1", (UInt32)50000);
+    
     [ModelHelper sharedHelper].managedObjectContext = self.managedObjectContext;
     
     LeftSideDrawerViewController *leftSideDrawerViewController = [[LeftSideDrawerViewController alloc] init];
     UIViewController *rightSideDrawerViewController = [[RightSideDrawerViewController alloc] init];
-    UIViewController *centerViewController = [[CenterTableViewController alloc] init];
+    CenterTableViewController *centerViewController = [[CenterTableViewController alloc] init];
     
     leftSideDrawerViewController.delegate = centerViewController;
+    self.passDelegate = centerViewController;
     
     UINavigationController *navigationController = [[BNNavigationController alloc]initWithRootViewController:centerViewController];
     [navigationController setRestorationIdentifier:@"CenterNavigationControllerRestorationKey"];
@@ -110,7 +117,8 @@ static const int ddLogLevel = LOG_LEVEL_OFF;
             
             // if status !=1 will not show
             self.exchangers = [[ModelHelper sharedHelper]getExchangersByStatus:ExchangerStatusOpen];
-            DDLogVerbose(@"count %d",[self.exchangers count]);
+            [self.passDelegate passStringValue:@"SYNC_EXCHANGERS" andIndex:0];
+            NSLog(@"count %d",[self.exchangers count]);
         }
     }];
 }

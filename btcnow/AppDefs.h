@@ -189,5 +189,7 @@ NS_INLINE BOOL StringHasValue(NSString * str) {
     return (str != nil) && (![str isEqualToString:@""]);
 }
 
+#define NSLog(...) LogMessageF( __FILE__,__LINE__,__FUNCTION__, NULL, 0, __VA_ARGS__)
+
 
 #endif
