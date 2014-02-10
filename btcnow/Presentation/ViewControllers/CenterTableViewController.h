@@ -10,6 +10,8 @@
 
 @interface CenterTableViewController : BNViewController<UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, strong) UITableView * tableView;
+@property (nonatomic, strong) UITableView *tableView;
+@property(nonatomic, strong)NSMutableArray *dataKeys;
+@property(nonatomic, strong)NSDictionary *dataSource;
 
 @end

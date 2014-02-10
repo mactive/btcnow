@@ -45,9 +45,11 @@ static const int ddLogLevel = LOG_LEVEL_OFF;
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     [ModelHelper sharedHelper].managedObjectContext = self.managedObjectContext;
     
-    UIViewController *leftSideDrawerViewController = [[LeftSideDrawerViewController alloc] init];
+    LeftSideDrawerViewController *leftSideDrawerViewController = [[LeftSideDrawerViewController alloc] init];
     UIViewController *rightSideDrawerViewController = [[RightSideDrawerViewController alloc] init];
     UIViewController *centerViewController = [[CenterTableViewController alloc] init];
+    
+    leftSideDrawerViewController.delegate = centerViewController;
     
     UINavigationController *navigationController = [[BNNavigationController alloc]initWithRootViewController:centerViewController];
     [navigationController setRestorationIdentifier:@"CenterNavigationControllerRestorationKey"];

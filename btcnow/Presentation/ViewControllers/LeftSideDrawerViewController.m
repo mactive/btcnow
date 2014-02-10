@@ -21,6 +21,7 @@
 @implementation LeftSideDrawerViewController
 @synthesize tableView;
 @synthesize dataSource;
+@synthesize delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -151,6 +152,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Exchanger *theExchanger = [self.dataSource objectAtIndex:indexPath.row];
+    if (theExchanger.selected) {
+        [self.delegate passStringValue:theExchanger.shortname andIndex:0];
+    }else{
+        [self.delegate passStringValue:theExchanger.shortname andIndex:1];
+    }
     theExchanger.selected = !theExchanger.selected;
     
     [self.tableView beginUpdates];

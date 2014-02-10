@@ -14,6 +14,7 @@
 -(void)passStringValue:(NSString *)value andIndex:(NSUInteger )index;
 -(void)passNumberValue:(NSNumber *)value andIndex:(NSUInteger )index;
 -(void)passNSDateValue:(NSDate *)value andIndex:(NSUInteger)index;
+-(void)passNSArrayValue:(NSArray *)value andSignal:(NSString *)signal;
 
 @end
 

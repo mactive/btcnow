@@ -7,7 +7,10 @@
 //
 
 #import "SideDrawerViewController.h"
+#import "PassValueDelegate.h"
 
 @interface LeftSideDrawerViewController : SideDrawerViewController
+
+@property(nonatomic,assign) NSObject<PassValueDelegate> *delegate;
 
 @end

@@ -37,7 +37,6 @@ static const int ddLogLevel = LOG_LEVEL_OFF;
     [[AppRequester sharedManager]GET:API_TICKER_PATH parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //
         if (responseObject != nil) {
-            NSLog(@"%@",responseObject);
             block(responseObject,nil);
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

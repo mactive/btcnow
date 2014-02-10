@@ -16,17 +16,19 @@
 #import "BNNavigationController.h"
 #import "NewsListViewController.h"
 #import "FMViewController.h"
+#import "PassValueDelegate.h"
 
-@interface CenterTableViewController ()
-@property(nonatomic, strong)NSDictionary *dataSource;
-@property(nonatomic, strong)NSArray *dataKeys;
+
+@interface CenterTableViewController ()<PassValueDelegate>
 @property(nonatomic, strong)UIView *footerView;
+@property(nonatomic, strong)NSArray *storedKeys;
 @end
 
 @implementation CenterTableViewController
 @synthesize tableView;
 @synthesize dataSource;
 @synthesize dataKeys;
+@synthesize storedKeys;
 @synthesize footerView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -79,12 +81,13 @@
     [super viewDidAppear:animated];
     [[AppRequester sharedManager]getTickerDataWithBlock:^(id responseObject, NSError *error) {
         //
-        NSLog(@"%@",responseObject);
-        self.dataSource = [responseObject objectForKey:@"exchangers"];
-        self.dataKeys = [self.dataSource allKeys];
+        self.dataSource = [responseObject objectForKey:@"btc"];
+        self.storedKeys = [self.dataSource allKeys];
+        self.dataKeys = [[NSMutableArray alloc]initWithArray: self.storedKeys];
         [self.tableView reloadData];
     }];
 }
+
 
 
 #pragma mark -- BarButton Item
@@ -145,13 +148,51 @@
     }
     
     NSDictionary *cellData = [self.dataSource objectForKey:[self.dataKeys objectAtIndex:indexPath.row]];
+    NSDictionary *nowData = [cellData objectForKey:@"now"];
     
     cell.textLabel.text = [self.dataKeys objectAtIndex:indexPath.row];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"last %@ high %@ ",[cellData objectForKey:@"last"],[cellData objectForKey:@"high"]];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"last %@ high %@",
+                                    [nowData objectForKey:@"last"],
+                                    [nowData objectForKey:@"high"]
+                                 ];
+    
+    
     
     return cell;
 }
 
+// YES UP / NO DOWN
+- (NSString *)upOrDown:(NSDictionary *)item
+{
+    NSDictionary *lastDict = item[@"last"];
+    NSDictionary *nowDict = item[@"now"];
+    
+    if ( [(NSString *)nowDict[@"sell"] integerValue] > [(NSString *)lastDict[@"sell"] integerValue] ) {
+        return @"UP";
+    }else{
+        return @"DOWN";
+    }
+}
+
+- (void)passStringValue:(NSString *)value andIndex:(NSUInteger)index
+{
+    NSLog(@"PASS: %@",value);
+    // 0 remove 1 add
+    if (index == 0) {
+        [self.dataKeys removeObject:value];
+    }else if(index == 1){
+        [self.dataKeys addObject:value];
+    }
+    
+    [self.tableView reloadData];
+}
+
+
+// resort the exchangers array
+- (void)sortExchangers:(NSArray *)sourceArray
+{
+    
+}
 
 
 - (void)didReceiveMemoryWarning
