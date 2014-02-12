@@ -36,7 +36,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.title = T(@"交易所管理");
+    self.title = T(@"交易所管理(点击关闭)");
     
 //    self.editingButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 //    self.editingButton.frame=CGRectMake(0, 0, 50, 29);

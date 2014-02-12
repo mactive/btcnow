@@ -45,6 +45,19 @@ static const int ddLogLevel = LOG_LEVEL_OFF;
     }];
 }
 
+- (void)getStatsDataWithBlock:(void (^)(id responseObject, NSError *error))block
+{
+    [[AppRequester sharedManager]GET:API_STATS_PATH parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //
+        if (responseObject != nil) {
+            block(responseObject,nil);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        //
+        block(nil, error);
+    }];
+}
+
 - (void)getExchangerInfoWithBlock:(void (^)(id, NSError *))block
 {
     [[AppRequester sharedManager]GET:API_INFO_PATH parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {

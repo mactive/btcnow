@@ -19,6 +19,7 @@
 		26323B21187EC3E00028466D /* Gotham-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 26323B1A187EC3E00028466D /* Gotham-Medium.otf */; };
 		26323B22187EC3E00028466D /* Museo500-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 26323B1B187EC3E00028466D /* Museo500-Regular.otf */; };
 		2645FB80188FCF2200AA3B76 /* NewsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2645FB7F188FCF2200AA3B76 /* NewsListViewController.m */; };
+		267037A718AB4C8200CB2E88 /* ATLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 267037A618AB4C8200CB2E88 /* ATLabel.m */; };
 		269053091894D3F30023B3DC /* Exchanger.m in Sources */ = {isa = PBXBuildFile; fileRef = 269053081894D3F30023B3DC /* Exchanger.m */; };
 		2690530C1894DFA30023B3DC /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2690530B1894DFA30023B3DC /* WebViewController.m */; };
 		269053121894E0210023B3DC /* ArticleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2690530F1894E0210023B3DC /* ArticleTableViewCell.m */; };
@@ -84,6 +85,8 @@
 		2645FB7E188FCF2200AA3B76 /* NewsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsListViewController.h; sourceTree = "<group>"; };
 		2645FB7F188FCF2200AA3B76 /* NewsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsListViewController.m; sourceTree = "<group>"; };
 		26590BC1187B8D8C00034BE0 /* PassValueDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassValueDelegate.h; sourceTree = "<group>"; };
+		267037A518AB4C8200CB2E88 /* ATLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATLabel.h; sourceTree = "<group>"; };
+		267037A618AB4C8200CB2E88 /* ATLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATLabel.m; sourceTree = "<group>"; };
 		269053071894D3F30023B3DC /* Exchanger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exchanger.h; sourceTree = "<group>"; };
 		269053081894D3F30023B3DC /* Exchanger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exchanger.m; sourceTree = "<group>"; };
 		2690530A1894DFA30023B3DC /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
@@ -191,6 +194,15 @@
 				26323B1B187EC3E00028466D /* Museo500-Regular.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		267037A418AB4C8200CB2E88 /* ATLabel */ = {
+			isa = PBXGroup;
+			children = (
+				267037A518AB4C8200CB2E88 /* ATLabel.h */,
+				267037A618AB4C8200CB2E88 /* ATLabel.m */,
+			);
+			path = ATLabel;
 			sourceTree = "<group>";
 		};
 		2690530D1894E0210023B3DC /* TableViewCells */ = {
@@ -318,6 +330,7 @@
 		26DB25C4187517E500D332D0 /* Venders */ = {
 			isa = PBXGroup;
 			children = (
+				267037A418AB4C8200CB2E88 /* ATLabel */,
 			);
 			path = Venders;
 			sourceTree = "<group>";
@@ -548,6 +561,7 @@
 				269053131894E0210023B3DC /* ArticleTableViewCellSubView.m in Sources */,
 				261026AE187C43C600B13B47 /* btcnow.xcdatamodeld in Sources */,
 				261026BC187C46F400B13B47 /* DataTransformer.m in Sources */,
+				267037A718AB4C8200CB2E88 /* ATLabel.m in Sources */,
 				2690530C1894DFA30023B3DC /* WebViewController.m in Sources */,
 				26DB25CB1875260E00D332D0 /* BNViewController.m in Sources */,
 				26DB25D41875271200D332D0 /* LeftSideDrawerViewController.m in Sources */,

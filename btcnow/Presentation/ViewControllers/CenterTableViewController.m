@@ -14,6 +14,7 @@
 #import "NewsListViewController.h"
 #import "FMViewController.h"
 #import "PassValueDelegate.h"
+#import "ATLabel.h"
 
 
 @interface CenterTableViewController ()<PassValueDelegate>
@@ -22,6 +23,9 @@
 @property(nonatomic, strong)NSTimer *loopTimer;
 @property(nonatomic, strong)UIView *statsView;
 @property(nonatomic, strong)UIView *headerView;
+@property(nonatomic, strong)UILabel *refreshTime;
+@property(nonatomic, strong)ATLabel *hashrateLabel;
+@property(nonatomic, strong)NSArray *titleArray;
 @end
 
 @implementation CenterTableViewController
@@ -31,7 +35,8 @@
 @synthesize storedKeys;
 @synthesize footerView;
 @synthesize loopTimer;
-@synthesize statsView, headerView;
+@synthesize statsView, headerView, refreshTime;
+@synthesize hashrateLabel, titleArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -77,11 +82,49 @@
     
     [self initStatsView];
     [self initHeaderView];
-//    [self initFooterView];
+    [self initFooterView];
 
 }
 
-- (void)refreshData
+-(void)refreshData
+{
+    [self refreshStatsData];
+    [self refreshTickerData];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+    
+    self.refreshTime.text = [formatter stringFromDate:[NSDate date]];
+}
+
+- (void)refreshStatsData
+{
+    [[AppRequester sharedManager]getStatsDataWithBlock:^(id responseObject, NSError *error) {
+        
+        if (responseObject) {
+            NSString *haseRateString = [responseObject objectForKey:@"hashrate"];
+            CGFloat haseRateFloat = [haseRateString floatValue]/1000;
+            NSString *haseRate = [NSString stringWithFormat:@"%@: %.1f GH/s",T(@"全网算力"),haseRateFloat];
+            
+            
+            NSString *blockString = [responseObject objectForKey:@"getblockcount"];
+            NSInteger blockCount = [blockString integerValue];
+            NSString *block =[NSString stringWithFormat:@"%@: %d",T(@"当前Block数"),blockCount];
+            
+            NSString *totalbcString = [responseObject objectForKey:@"totalbc"];
+            NSInteger totalbcCount = [totalbcString integerValue];
+            NSString *totalbc =[NSString stringWithFormat:@"%@: %d BTC",T(@"全网BTC总数"),totalbcCount];
+            
+            
+            self.titleArray = @[haseRate,block,totalbc];
+            self.hashrateLabel.wordList = self.titleArray;
+
+        }
+        
+    }];
+}
+
+- (void)refreshTickerData
 {
     [[AppRequester sharedManager]getTickerDataWithBlock:^(id responseObject, NSError *error) {
         //
@@ -101,12 +144,21 @@
 //    self.statsView.layer.cornerRadius = OFFSET_X;
     self.statsView.layer.backgroundColor = [WHITECOLOR CGColor];
     
-    UILabel *label1 = [[UILabel alloc]initWithFrame:self.statsView.bounds];
-    label1.font = FONT_BOOK_12;
-    label1.text = @"HashRate: 23445.56 GH/s";
-    label1.textAlignment = NSTextAlignmentCenter;
-    [self.statsView addSubview:label1];
+    // animated label
+    self.hashrateLabel = [[ATLabel alloc]initWithFrame:self.statsView.bounds];
+    self.hashrateLabel.font = FONT_BOOK_12;
+    self.hashrateLabel.textAlignment = NSTextAlignmentCenter;
+    [self.statsView addSubview:self.hashrateLabel];
     
+//    self.hashrateLabel = [[UILabel alloc]initWithFrame:self.statsView.bounds];
+//    self.hashrateLabel.font = FONT_BOOK_12;
+//    self.hashrateLabel.text = @"HashRate: GH/s";
+//    self.hashrateLabel.textAlignment = NSTextAlignmentCenter;
+    
+    
+    self.titleArray = @[T(@"全网算力"),T(@"当前Block数"), T(@"全网BTC总数")];
+    [self.hashrateLabel animateWithWords:self.titleArray forDuration:2.0f];
+
     [self.view addSubview:self.statsView];
 }
 
@@ -147,12 +199,18 @@
 
 - (void)initFooterView
 {
-    self.footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, TOTAL_WIDTH, CELL_HEIGHT)];
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button setTitle:T(@"实时新闻") forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(viewNewsAction:) forControlEvents:UIControlEventTouchUpInside];
-    [button setFrame:CGRectMake(20, 10, 280, 40)];
-    [self.footerView addSubview:button];
+    self.footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, LABEL_ALL_W, CELL_HEIGHT)];
+    self.refreshTime = [[UILabel alloc]initWithFrame:self.footerView.bounds];
+    self.refreshTime.font = FONT_BOOK_12;
+    self.refreshTime.textAlignment = NSTextAlignmentCenter;
+    self.refreshTime.textColor = WHITECOLOR;
+    [self.footerView addSubview:self.refreshTime];
+
+//    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    [button setTitle:T(@"实时新闻") forState:UIControlStateNormal];
+//    [button addTarget:self action:@selector(viewNewsAction:) forControlEvents:UIControlEventTouchUpInside];
+//    [button setFrame:CGRectMake(20, 10, 280, 40)];
+//    [self.footerView addSubview:button];
     self.tableView.tableFooterView = self.footerView;
 }
 
@@ -329,7 +387,7 @@
         //
         UILabel *updownLabel = (UILabel *)[cell viewWithTag:CELL_UPDOWN_TAG];
         updownLabel.text = [self upOrDown:cellData];
-        NSLog(@"upOrDown %@",updownLabel.text);
+
         if ([updownLabel.text isEqualToString:ICON_UP]) {
             updownLabel.textColor = GREENCOLOR;
         }else if([updownLabel.text isEqualToString:ICON_DOWN]){

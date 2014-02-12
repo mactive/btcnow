@@ -8,8 +8,8 @@
 
 #import "AFHTTPRequestOperationManager.h"
 
-//#define API_BASE            @"http://localhost:8866"
-#define API_BASE            @"http://www.ydkcar.com"
+#define API_BASE            @"http://localhost:8866"
+//#define API_BASE            @"http://www.ydkcar.com"
 
 
 #define API_TICKER_PATH     @"/btcnow/ticker"
@@ -22,6 +22,7 @@
 + (AppRequester *)sharedManager;
 
 - (void)getTickerDataWithBlock:(void (^)(id responseObject, NSError *error))block;
+- (void)getStatsDataWithBlock:(void (^)(id responseObject, NSError *error))block;
 - (void)getExchangerInfoWithBlock:(void (^)(id responseObject, NSError *error))block;
 - (void)getNewsWithStrat:(NSInteger)start length:(NSInteger)length andBlock:(void (^)(id responseObject, NSError *error))block;
 
