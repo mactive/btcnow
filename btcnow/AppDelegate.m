@@ -48,7 +48,7 @@ static const int ddLogLevel = LOG_LEVEL_OFF;
 {
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     LoggerSetViewerHost(NULL, (CFStringRef)@"127.0.0.1", (UInt32)50000);
-    
+
     [ModelHelper sharedHelper].managedObjectContext = self.managedObjectContext;
     
     LeftSideDrawerViewController *leftSideDrawerViewController = [[LeftSideDrawerViewController alloc] init];
@@ -127,6 +127,8 @@ static const int ddLogLevel = LOG_LEVEL_OFF;
 {
     self.window.backgroundColor = BGCOLOR;
     [self.window makeKeyAndVisible];
+
+    
     return YES;
 }
 

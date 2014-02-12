@@ -44,7 +44,9 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    self.view.backgroundColor = GREENCOLOR;
+    
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     [self.tableView setDelegate:self];
     [self.tableView setDataSource:self];
     [self.view addSubview:self.tableView];
@@ -56,7 +58,6 @@
     [self setupRightMenuButton];
     
     [self initFooterView];
-    
 }
 
 - (void)refreshData
@@ -64,7 +65,6 @@
     [[AppRequester sharedManager]getTickerDataWithBlock:^(id responseObject, NSError *error) {
         //
         self.dataSource = [responseObject objectForKey:@"btc"];
-        
         [self.tableView reloadData];
     }];
 }
@@ -73,7 +73,7 @@
 {
     self.footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, TOTAL_WIDTH, CELL_HEIGHT)];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button setTitle:T(@"浏览文章") forState:UIControlStateNormal];
+    [button setTitle:T(@"实时新闻") forState:UIControlStateNormal];
     [button addTarget:self action:@selector(viewNewsAction) forControlEvents:UIControlEventTouchUpInside];
     [button setFrame:CGRectMake(20, 10, 280, 40)];
     [self.footerView addSubview:button];
@@ -92,6 +92,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    [self refreshData];
     
     self.loopTimer = [NSTimer
                       scheduledTimerWithTimeInterval:(2.0)
@@ -127,7 +129,7 @@
     UIButton *leftDrawerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
     leftDrawerButton.titleLabel.font = FONT_AWESOME_24;
     [leftDrawerButton setTitle:ICON_LIST forState:UIControlStateNormal];
-    [leftDrawerButton setTitleColor:BLUECOLOR forState:UIControlStateNormal];
+    [leftDrawerButton setTitleColor:WHITECOLOR forState:UIControlStateNormal];
     [leftDrawerButton addTarget:self action:@selector(leftDrawerButtonPress:) forControlEvents:UIControlEventTouchUpInside];
     [leftDrawerButton setFrame:CGRectMake(0, 0, 50, 30)];
     
@@ -138,7 +140,7 @@
     UIButton *rightDrawerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
     rightDrawerButton.titleLabel.font = FONT_AWESOME_24;
     [rightDrawerButton setTitle:ICON_SETTING forState:UIControlStateNormal];
-    [rightDrawerButton setTitleColor:BLUECOLOR forState:UIControlStateNormal];
+    [rightDrawerButton setTitleColor:WHITECOLOR forState:UIControlStateNormal];
     [rightDrawerButton addTarget:self action:@selector(rightDrawerButtonPress:) forControlEvents:UIControlEventTouchUpInside];
     [rightDrawerButton setFrame:CGRectMake(0, 0, 50, 30)];
     
@@ -181,13 +183,9 @@
     NSDictionary *cellData = [self.dataSource objectForKey:[self.dataKeys objectAtIndex:indexPath.row]];
     NSDictionary *nowData = [cellData objectForKey:@"now"];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@",
-    [self.dataKeys objectAtIndex:indexPath.row], [self upOrDown:cellData]];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@  -  %@ %@ -  %@",
+    [self.dataKeys objectAtIndex:indexPath.row], [nowData objectForKey:@"last"], [self upOrDown:cellData], [nowData objectForKey:@"vol"]];
     
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"last %@ high %@",
-                                    [nowData objectForKey:@"last"],
-                                    [nowData objectForKey:@"high"]
-                                 ];
     
     
     

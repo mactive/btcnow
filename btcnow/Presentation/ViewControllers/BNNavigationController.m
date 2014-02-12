@@ -27,6 +27,13 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    if (OSVersionIsAtLeastiOS7) {
+        self.navigationBar.barTintColor = DARKCOLOR;
+    }else{
+        self.navigationBar.tintColor = DARKCOLOR;
+    }
+    
+    self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
 }
 
 - (void)didReceiveMemoryWarning

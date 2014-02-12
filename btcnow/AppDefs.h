@@ -122,22 +122,14 @@ alpha:(a)]
 
 
 #define BGCOLOR [UIColor colorWithRed:222.0f/255.0 green:222.0f/255.0 blue:222.0f/255.0 alpha:1.0]
-#define GREENCOLOR [UIColor colorWithRed:126.0f/255.0f green:211.0f/255.0f blue:33.0f/255.0f alpha:1]
+#define GREENCOLOR [UIColor colorWithRed:160.0f/255.0f green:216.0f/255.0f blue:103.0f/255.0f alpha:1]
 #define REDCOLOR [UIColor colorWithRed:237.0f/255.0f green:28.0f/255.0f blue:36.0f/255.0f alpha:1]
-#define GRAYCOLOR [UIColor colorWithRed:158.0f/255.0f green:158.0f/255.0f blue:158.0f/255.0f alpha:1]
-#define GRAYLIGHTCOLOR [UIColor colorWithRed:200.0f/255.0f green:200.0f/255.0f blue:200.0f/255.0f alpha:1]
-#define HANDLEBORDERCOLOR [UIColor colorWithRed:228.0f/255.0f green:228.0f/255.0f blue:228.0f/255.0f alpha:1].CGColor
-#define HANDLEBGCOLOR [UIColor colorWithRed:248.0f/255.0f green:248.0f/255.0f blue:248.0f/255.0f alpha:1]
-#define DARKCOLOR [UIColor colorWithRed:42.0f/255.0f green:43.0f/255.0f blue:49.0f/255.0f alpha:1]
+#define WHITECOLOR [UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:1]
 
-#define ORANGECOLOR [UIColor colorWithRed:255.0f/255.0f green:236.0f/255.0f blue:76.0f/255.0f alpha:1]
-#define ORANGE_INNERSHADOW_COLOR [UIColor colorWithRed:239.0f/255.0f green:105.0f/255.0f blue:6.0f/255.0f alpha:1]
-#define ORANGE_GLOW_COLOR [UIColor colorWithRed:252.0f/255.0f green:242.0f/255.0f blue:174.0f/255.0f alpha:0.4f]
-
-#define BLUECOLOR [UIColor colorWithRed:74.0f/255.0f green:144.0f/255.0f blue:226.0f/255.0f alpha:1]
-
-#define ORANGE_LINE_COLOR [UIColor colorWithRed:255.0f/255.0f green:198.0f/255.0f blue:0.0f/255.0f alpha:1]
-#define YELLOW_DOT_COLOR  [UIColor colorWithRed:251.0f/255.0f green:203.0f/255.0f blue:58.0f/255.0f alpha:1]
+#define GRAYCOLOR [UIColor colorWithRed:155.0f/255.0f green:155.0f/255.0f blue:155.0f/255.0f alpha:1]
+#define GRAYLIGHTCOLOR [UIColor colorWithRed:185.0f/255.0f green:185.0f/255.0f blue:185.0f/255.0f alpha:1]
+#define DARKCOLOR [UIColor colorWithRed:50.0f/255.0f green:50.0f/255.0f blue:50.0f/255.0f alpha:1]
+#define DARKLIGHTCOLOR [UIColor colorWithRed:74.0f/255.0f green:74.0f/255.0f blue:74.0f/255.0f alpha:1]
 
 #define SEPCOLOR [UIColor colorWithRed:200.0f/255.0f green:200.0f/255.0f blue:200.0f/255.0f alpha:1]
 
