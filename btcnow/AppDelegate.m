@@ -72,19 +72,19 @@ static const int ddLogLevel = LOG_LEVEL_OFF;
         self.drawerController = [[MMDrawerController alloc]
                                  initWithCenterViewController:navigationController
                                  leftDrawerViewController:leftSideNavController
-                                 rightDrawerViewController:rightSideNavController];
+                                 rightDrawerViewController:nil];
         [self.drawerController setShowsShadow:NO];
     }else{
         self.drawerController = [[MMDrawerController alloc]
                                  initWithCenterViewController:navigationController
                                  leftDrawerViewController:leftSideNavController
-                                 rightDrawerViewController:rightSideDrawerViewController];
+                                 rightDrawerViewController:nil];
     }
     
     
     [self.drawerController setRestorationIdentifier:@"MMDrawer"];
     [self.drawerController setMaximumLeftDrawerWidth:LEFT_MAX_WIDTH];
-    [self.drawerController setMaximumRightDrawerWidth:RIGHT_MAX_WIDTH];
+//    [self.drawerController setMaximumRightDrawerWidth:RIGHT_MAX_WIDTH];
     [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
     [self.drawerController setShowsShadow:YES];

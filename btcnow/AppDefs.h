@@ -81,7 +81,6 @@
 #define ICON_COLLECT    @"\uf005"
 #define ICON_COMMENTS   @"\uf086"
 #define ICON_TIMES_CIRCLE @"\uf057"
-#define ICON_FLAG       @"\uf024"
 #define ICON_CHECK      @"\uf00c"
 #define ICON_LIST       @"\uf0c9"
 #define ICON_FLAG       @"\uf024"
@@ -90,6 +89,12 @@
 #define ICON_SETTING    @"\uf013"
 #define ICON_FEEDBACK   @"\uf0e5"
 #define ICON_MINE       @"\uf058"
+#define ICON_LEFT       @"\uf060"
+#define ICON_RIGHT      @"\uf061"
+#define ICON_UP         @"\uf062"
+#define ICON_DOWN       @"\uf063"
+#define ICON_IDLE       @"\uf068"
+#define ICON_RSS        @"\uf09e"
 
 // NSARRAY
 #define IOS7_CONTENT_OFFSET_Y 64.0f

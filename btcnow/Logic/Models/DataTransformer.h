@@ -35,8 +35,6 @@
 + (NSString *)getArticleSummary:(id)jsonData;
 + (NSDate *)getArticleDate:(id)jsonData;
 + (NSString *)getArticleOrigin:(id)jsonData;
-+ (NSInteger)getCountFromString:(NSString *)source useSubString:(NSString *)subString;
-
 
 
 + (NSString *)datetimeStrfromNSDate:(NSDate *)date;
@@ -57,6 +55,6 @@
 + (NSString *)getString:(NSString *)str byMax:(NSInteger)max;
 + (NSInteger)getCountFromString:(NSString *)source useSubString:(NSString *)subString;
 
-
++ (NSMutableArray *)sortArray:(NSArray *)sourceArray withAsc:(BOOL)ASC;
 
 @end

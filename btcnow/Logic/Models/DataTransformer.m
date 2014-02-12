@@ -335,5 +335,34 @@ static const int ddLogLevel = LOG_LEVEL_OFF;
 }
 
 
++ (NSMutableArray *)sortArray:(NSArray *)sourceArray withAsc:(BOOL)ASC
+{
+    NSMutableArray *sourceMutableArray = [[NSMutableArray alloc]initWithArray:sourceArray];
+    
+    NSSortDescriptor *sortDescriptor;
+    sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@""
+                                                 ascending:ASC];
+    NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+    
+    [sourceMutableArray sortUsingDescriptors:sortDescriptors];
+    
+    return sourceMutableArray;
+}
+
+// resort the exchangers array
+// another way
+//+ (NSMutableArray *)sortArray:(NSArray *)sourceArray withAsc:(BOOL)ASC
+//{
+//    NSArray *sortedArray = [[NSArray alloc]init];
+//
+//
+//    sortedArray = [sourceArray sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+//        NSString *first = obj1;
+//        NSString *second = obj2;
+//        return [first compare:second];
+//    }];
+//    return [[NSMutableArray alloc]initWithArray: sortedArray];
+//}
+
 
 @end
