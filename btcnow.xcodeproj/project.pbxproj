@@ -102,7 +102,6 @@
 		2690530F1894E0210023B3DC /* ArticleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleTableViewCell.m; sourceTree = "<group>"; };
 		269053101894E0210023B3DC /* ArticleTableViewCellSubView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleTableViewCellSubView.h; sourceTree = "<group>"; };
 		269053111894E0210023B3DC /* ArticleTableViewCellSubView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleTableViewCellSubView.m; sourceTree = "<group>"; };
-		26971BF7187AFDE100F70FB1 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		26B6FE2B18917E99001129B8 /* FMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMViewController.h; sourceTree = "<group>"; };
 		26B6FE2C18917E99001129B8 /* FMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMViewController.m; sourceTree = "<group>"; };
 		26B6FE2E18917FE3001129B8 /* TTViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTViewController.h; sourceTree = "<group>"; };
@@ -369,7 +368,6 @@
 		26DC43E31869CD9500EC9C66 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				26971BF7187AFDE100F70FB1 /* Reveal.framework */,
 				26DC43E41869CD9500EC9C66 /* Foundation.framework */,
 				26DC43E61869CD9500EC9C66 /* CoreGraphics.framework */,
 				26DC43E81869CD9500EC9C66 /* UIKit.framework */,
@@ -739,9 +737,6 @@
 					SystemConfiguration,
 					"-framework",
 					UIKit,
-					"-ObjC",
-					"-framework",
-					Reveal,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -781,9 +776,6 @@
 					SystemConfiguration,
 					"-framework",
 					UIKit,
-					"-ObjC",
-					"-framework",
-					Reveal,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
