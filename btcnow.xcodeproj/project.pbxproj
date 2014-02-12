@@ -20,6 +20,10 @@
 		26323B22187EC3E00028466D /* Museo500-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 26323B1B187EC3E00028466D /* Museo500-Regular.otf */; };
 		2645FB80188FCF2200AA3B76 /* NewsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2645FB7F188FCF2200AA3B76 /* NewsListViewController.m */; };
 		267037A718AB4C8200CB2E88 /* ATLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 267037A618AB4C8200CB2E88 /* ATLabel.m */; };
+		267037B118AB64F600CB2E88 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 267037AF18AB64F600CB2E88 /* icon.png */; };
+		267037B218AB64F600CB2E88 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 267037B018AB64F600CB2E88 /* icon@2x.png */; };
+		267037B518AB652300CB2E88 /* 4s.png in Resources */ = {isa = PBXBuildFile; fileRef = 267037B318AB652300CB2E88 /* 4s.png */; };
+		267037B618AB652300CB2E88 /* 5s.png in Resources */ = {isa = PBXBuildFile; fileRef = 267037B418AB652300CB2E88 /* 5s.png */; };
 		269053091894D3F30023B3DC /* Exchanger.m in Sources */ = {isa = PBXBuildFile; fileRef = 269053081894D3F30023B3DC /* Exchanger.m */; };
 		2690530C1894DFA30023B3DC /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2690530B1894DFA30023B3DC /* WebViewController.m */; };
 		269053121894E0210023B3DC /* ArticleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2690530F1894E0210023B3DC /* ArticleTableViewCell.m */; };
@@ -34,7 +38,6 @@
 		26DB25D11875269400D332D0 /* SideDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DB25D01875269400D332D0 /* SideDrawerViewController.m */; };
 		26DB25D41875271200D332D0 /* LeftSideDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DB25D31875271200D332D0 /* LeftSideDrawerViewController.m */; };
 		26DB25D71875272400D332D0 /* RightSideDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DB25D61875272400D332D0 /* RightSideDrawerViewController.m */; };
-		26DB25DB187550EF00D332D0 /* 5s.png in Resources */ = {isa = PBXBuildFile; fileRef = 26DB25DA187550EF00D332D0 /* 5s.png */; };
 		26DB25E5187553B900D332D0 /* 58.png in Resources */ = {isa = PBXBuildFile; fileRef = 26DB25E2187553B900D332D0 /* 58.png */; };
 		26DB25E6187553B900D332D0 /* 80.png in Resources */ = {isa = PBXBuildFile; fileRef = 26DB25E3187553B900D332D0 /* 80.png */; };
 		26DB25E7187553B900D332D0 /* 120.png in Resources */ = {isa = PBXBuildFile; fileRef = 26DB25E4187553B900D332D0 /* 120.png */; };
@@ -87,6 +90,10 @@
 		26590BC1187B8D8C00034BE0 /* PassValueDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassValueDelegate.h; sourceTree = "<group>"; };
 		267037A518AB4C8200CB2E88 /* ATLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATLabel.h; sourceTree = "<group>"; };
 		267037A618AB4C8200CB2E88 /* ATLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATLabel.m; sourceTree = "<group>"; };
+		267037AF18AB64F600CB2E88 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		267037B018AB64F600CB2E88 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		267037B318AB652300CB2E88 /* 4s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4s.png; sourceTree = "<group>"; };
+		267037B418AB652300CB2E88 /* 5s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5s.png; sourceTree = "<group>"; };
 		269053071894D3F30023B3DC /* Exchanger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exchanger.h; sourceTree = "<group>"; };
 		269053081894D3F30023B3DC /* Exchanger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exchanger.m; sourceTree = "<group>"; };
 		2690530A1894DFA30023B3DC /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
@@ -116,7 +123,6 @@
 		26DB25D31875271200D332D0 /* LeftSideDrawerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftSideDrawerViewController.m; sourceTree = "<group>"; };
 		26DB25D51875272400D332D0 /* RightSideDrawerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightSideDrawerViewController.h; sourceTree = "<group>"; };
 		26DB25D61875272400D332D0 /* RightSideDrawerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightSideDrawerViewController.m; sourceTree = "<group>"; };
-		26DB25DA187550EF00D332D0 /* 5s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5s.png; sourceTree = "<group>"; };
 		26DB25E2187553B900D332D0 /* 58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 58.png; sourceTree = "<group>"; };
 		26DB25E3187553B900D332D0 /* 80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 80.png; sourceTree = "<group>"; };
 		26DB25E4187553B900D332D0 /* 120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120.png; sourceTree = "<group>"; };
@@ -300,10 +306,13 @@
 		26DB25BE187517E500D332D0 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				267037B318AB652300CB2E88 /* 4s.png */,
+				267037B418AB652300CB2E88 /* 5s.png */,
+				267037AF18AB64F600CB2E88 /* icon.png */,
+				267037B018AB64F600CB2E88 /* icon@2x.png */,
 				26DB25E2187553B900D332D0 /* 58.png */,
 				26DB25E3187553B900D332D0 /* 80.png */,
 				26DB25E4187553B900D332D0 /* 120.png */,
-				26DB25DA187550EF00D332D0 /* 5s.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -493,12 +502,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				267037B518AB652300CB2E88 /* 4s.png in Resources */,
 				26DB25E6187553B900D332D0 /* 80.png in Resources */,
 				26323B1D187EC3E00028466D /* Gotham-Black.otf in Resources */,
+				267037B218AB64F600CB2E88 /* icon@2x.png in Resources */,
 				26323B1F187EC3E00028466D /* Gotham-Book.otf in Resources */,
+				267037B118AB64F600CB2E88 /* icon.png in Resources */,
 				26B6FE3218918073001129B8 /* Movies.plist in Resources */,
-				26DB25DB187550EF00D332D0 /* 5s.png in Resources */,
 				26DC43F11869CD9500EC9C66 /* InfoPlist.strings in Resources */,
+				267037B618AB652300CB2E88 /* 5s.png in Resources */,
 				26323B1C187EC3E00028466D /* FontAwesome.otf in Resources */,
 				26323B21187EC3E00028466D /* Gotham-Medium.otf in Resources */,
 				26DB25E7187553B900D332D0 /* 120.png in Resources */,
@@ -706,7 +718,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "btcnow/btcnow-Prefix.pch";
 				INFOPLIST_FILE = "btcnow/btcnow-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -748,7 +760,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "btcnow/btcnow-Prefix.pch";
 				INFOPLIST_FILE = "btcnow/btcnow-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",

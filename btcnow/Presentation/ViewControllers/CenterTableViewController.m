@@ -65,6 +65,7 @@
     tableFrame.size.width = LABEL_ALL_W;
     tableFrame.origin.x = OFFSET_X;
     tableFrame.origin.y = IOS7_CONTENT_OFFSET_Y;
+    tableFrame.size.height =  tableFrame.size.height - IOS7_CONTENT_OFFSET_Y;
     
     self.tableView = [[UITableView alloc] initWithFrame:tableFrame style:UITableViewStylePlain];
     [self.tableView setDelegate:self];
@@ -118,7 +119,6 @@
             
             self.titleArray = @[haseRate,block,totalbc];
             self.hashrateLabel.wordList = self.titleArray;
-
         }
         
     }];
